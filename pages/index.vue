@@ -1,17 +1,6 @@
 <template>
   <div>
-    <div>
-      <ul class="blogLinks">
-        <nuxt-link to="/">Home</nuxt-link>
-        <nuxt-link to="/about">About</nuxt-link>
-        <template v-for="(post, key) in posts">
-          <!-- <li class="blogLinks__item"> -->
-            <a @click="handleRoute(key, post.slug)">{{post.title}}</a>
-          <!-- </li> -->
-          <!-- <nuxt-link @click.native="handleNuxtLink(key)" :to="{ path: `/posts/${post.slug}`}">View Post &rarr;</nuxt-link> -->
-        </template>
-      </ul>
-    </div>
+    <h1>Home Page</h1>
   </div>
 </template>
 
@@ -61,7 +50,6 @@ export default {
     handleRoute(key, slug) {
       Store.setCurrentKey(key)
       this.$router.push({ path: `/posts/${slug}` })
-      // router.push(...)
     },
     handleNuxtLink(key) {
       Store.setCurrentKey(key)

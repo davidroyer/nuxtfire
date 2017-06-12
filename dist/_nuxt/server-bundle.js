@@ -61,7 +61,7 @@ module.exports =
 /******/ 	__webpack_require__.o = function(object, property) { return Object.prototype.hasOwnProperty.call(object, property); };
 /******/
 /******/ 	// __webpack_public_path__
-/******/ 	__webpack_require__.p = "/_nuxt/";
+/******/ 	__webpack_require__.p = "/nuxtfire/_nuxt/";
 /******/
 /******/ 	// Load entry module and return exports
 /******/ 	return __webpack_require__(__webpack_require__.s = 66);
@@ -1353,7 +1353,7 @@ function getContext(context) {
 
     route: context.to ? context.to : context.route,
     error: context.error,
-    base: '/',
+    base: '/nuxtfire/',
     env: {}
   };
   var next = context.next;
@@ -1702,16 +1702,16 @@ module.exports = require("querystring");
 
 __WEBPACK_IMPORTED_MODULE_0_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_1_vue_router___default.a);
 
-var _68d722db =  false ? function () {
-  return System.import('/Users/droyer/Playground-2017/with-firebase/pages/index.vue');
+var _9f4148e8 =  false ? function () {
+  return System.import('/Users/droyer/Playground-2017/nuxtfire/pages/index.vue');
 } : __webpack_require__(134);
 
-var _491f4816 =  false ? function () {
-  return System.import('/Users/droyer/Playground-2017/with-firebase/pages/about.vue');
+var _deb0fe72 =  false ? function () {
+  return System.import('/Users/droyer/Playground-2017/nuxtfire/pages/about.vue');
 } : __webpack_require__(133);
 
-var _240704d2 =  false ? function () {
-  return System.import('/Users/droyer/Playground-2017/with-firebase/pages/posts/_slug.vue');
+var _5fa9ad88 =  false ? function () {
+  return System.import('/Users/droyer/Playground-2017/nuxtfire/pages/posts/_slug.vue');
 } : __webpack_require__(135);
 
 var scrollBehavior = function scrollBehavior(to, from, savedPosition) {
@@ -1740,20 +1740,20 @@ var scrollBehavior = function scrollBehavior(to, from, savedPosition) {
 
 /* harmony default export */ __webpack_exports__["a"] = (new __WEBPACK_IMPORTED_MODULE_1_vue_router___default.a({
   mode: 'history',
-  base: '/',
+  base: '/nuxtfire/',
   linkActiveClass: 'nuxt-link-active',
   scrollBehavior: scrollBehavior,
   routes: [{
     path: "/",
-    component: _68d722db,
+    component: _9f4148e8,
     name: "index"
   }, {
     path: "/about",
-    component: _491f4816,
+    component: _deb0fe72,
     name: "about"
   }, {
     path: "/posts/:slug?",
-    component: _240704d2,
+    component: _5fa9ad88,
     name: "posts-slug"
   }]
 }));
@@ -1811,7 +1811,7 @@ var _app = new __WEBPACK_IMPORTED_MODULE_1_vue___default.a(__WEBPACK_IMPORTED_MO
     }
     opts.query = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2_querystring__["stringify"])(opts.query);
     opts.path = opts.path + (opts.query ? '?' + opts.query : '');
-    opts.path = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_6__utils__["a" /* urlJoin */])('/', opts.path);
+    opts.path = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_6__utils__["a" /* urlJoin */])('/nuxtfire/', opts.path);
     context.res.writeHead(opts.status, {
       'Location': opts.path
     });
@@ -1970,7 +1970,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 var layouts = {
 
   "_default":  false ? function () {
-    return System.import('/Users/droyer/Playground-2017/with-firebase/layouts/default.vue');
+    return System.import('/Users/droyer/Playground-2017/nuxtfire/layouts/default.vue');
   } : __webpack_require__(132)
 
 };
@@ -3771,7 +3771,7 @@ exports = module.exports = __webpack_require__(17)();
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n.error-page[data-v-051f3c9e] {\n  color: #000;\n  background: #fff;\n  top: 0;\n  bottom: 0;\n  left: 0;\n  right: 0;\n  position: absolute;\n  font-family: \"SF UI Text\", \"Helvetica Neue\", \"Lucida Grande\";\n  text-align: center;\n  padding-top: 20%;\n}\n.error-code[data-v-051f3c9e] {\n  display: inline-block;\n  font-size: 24px;\n  font-weight: 500;\n  vertical-align: top;\n  border-right: 1px solid rgba(0, 0, 0, 0.298039);\n  margin: 0px 20px 0px 0px;\n  padding: 10px 23px;\n}\n.error-wrapper-message[data-v-051f3c9e] {\n  display: inline-block;\n  text-align: left;\n  line-height: 49px;\n  height: 49px;\n  vertical-align: middle;\n}\n.error-message[data-v-051f3c9e] {\n  font-size: 14px;\n  font-weight: normal;\n  margin: 0px;\n  padding: 0px;\n}\n.error-link[data-v-051f3c9e] {\n  color: #00BCD4;\n  font-weight: normal;\n  text-decoration: none;\n  font-size: 14px;\n}\n", ""]);
 
 // exports
 
@@ -3799,7 +3799,7 @@ exports = module.exports = __webpack_require__(17)();
 
 
 // module
-exports.push([module.i, "\n.error-page[data-v-73a29afa] {\n  color: #000;\n  background: #fff;\n  top: 0;\n  bottom: 0;\n  left: 0;\n  right: 0;\n  position: absolute;\n  font-family: \"SF UI Text\", \"Helvetica Neue\", \"Lucida Grande\";\n  text-align: center;\n  padding-top: 20%;\n}\n.error-code[data-v-73a29afa] {\n  display: inline-block;\n  font-size: 24px;\n  font-weight: 500;\n  vertical-align: top;\n  border-right: 1px solid rgba(0, 0, 0, 0.298039);\n  margin: 0px 20px 0px 0px;\n  padding: 10px 23px;\n}\n.error-wrapper-message[data-v-73a29afa] {\n  display: inline-block;\n  text-align: left;\n  line-height: 49px;\n  height: 49px;\n  vertical-align: middle;\n}\n.error-message[data-v-73a29afa] {\n  font-size: 14px;\n  font-weight: normal;\n  margin: 0px;\n  padding: 0px;\n}\n.error-link[data-v-73a29afa] {\n  color: #00BCD4;\n  font-weight: normal;\n  text-decoration: none;\n  font-size: 14px;\n}\n", ""]);
+exports.push([module.i, "\n.progress[data-v-4d9492b6] {\n  position: fixed;\n  top: 0px;\n  left: 0px;\n  right: 0px;\n  height: 2px;\n  width: 0%;\n  transition: width 0.2s, opacity 0.4s;\n  opacity: 1;\n  background-color: #efc14e;\n  z-index: 999999;\n}\n", ""]);
 
 // exports
 
@@ -3813,7 +3813,7 @@ exports = module.exports = __webpack_require__(17)();
 
 
 // module
-exports.push([module.i, "\n.user[data-v-df8cec78] {\n  text-align: center;\n  margin-top: 100px;\n  font-family: sans-serif;\n}\n", ""]);
+exports.push([module.i, "\n.user[data-v-bb120d8a] {\n  text-align: center;\n  margin-top: 100px;\n  font-family: sans-serif;\n}\n", ""]);
 
 // exports
 
@@ -3827,7 +3827,7 @@ exports = module.exports = __webpack_require__(17)();
 
 
 // module
-exports.push([module.i, "\n.progress[data-v-e8827ca4] {\n  position: fixed;\n  top: 0px;\n  left: 0px;\n  right: 0px;\n  height: 2px;\n  width: 0%;\n  transition: width 0.2s, opacity 0.4s;\n  opacity: 1;\n  background-color: #efc14e;\n  z-index: 999999;\n}\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -4606,13 +4606,13 @@ var Component = __webpack_require__(3)(
   /* script */
   __webpack_require__(68),
   /* template */
-  __webpack_require__(138),
+  __webpack_require__(140),
   /* scopeId */
   null,
   /* cssModules */
   null
 )
-Component.options.__file = "/Users/droyer/Playground-2017/with-firebase/.nuxt/App.vue"
+Component.options.__file = "/Users/droyer/Playground-2017/nuxtfire/.nuxt/App.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] App.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -4625,19 +4625,19 @@ module.exports = Component.exports
 
 
 /* styles */
-__webpack_require__(146)
+__webpack_require__(144)
 
 var Component = __webpack_require__(3)(
   /* script */
   __webpack_require__(69),
   /* template */
-  __webpack_require__(141),
+  __webpack_require__(136),
   /* scopeId */
-  "data-v-73a29afa",
+  "data-v-051f3c9e",
   /* cssModules */
   null
 )
-Component.options.__file = "/Users/droyer/Playground-2017/with-firebase/.nuxt/components/nuxt-error.vue"
+Component.options.__file = "/Users/droyer/Playground-2017/nuxtfire/.nuxt/components/nuxt-error.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] nuxt-error.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -4650,19 +4650,19 @@ module.exports = Component.exports
 
 
 /* styles */
-__webpack_require__(148)
+__webpack_require__(146)
 
 var Component = __webpack_require__(3)(
   /* script */
   __webpack_require__(70),
   /* template */
-  __webpack_require__(143),
+  __webpack_require__(139),
   /* scopeId */
-  "data-v-e8827ca4",
+  "data-v-4d9492b6",
   /* cssModules */
   null
 )
-Component.options.__file = "/Users/droyer/Playground-2017/with-firebase/.nuxt/components/nuxt-loading.vue"
+Component.options.__file = "/Users/droyer/Playground-2017/nuxtfire/.nuxt/components/nuxt-loading.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] nuxt-loading.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -4677,13 +4677,13 @@ var Component = __webpack_require__(3)(
   /* script */
   __webpack_require__(71),
   /* template */
-  __webpack_require__(136),
+  __webpack_require__(138),
   /* scopeId */
   null,
   /* cssModules */
   null
 )
-Component.options.__file = "/Users/droyer/Playground-2017/with-firebase/.nuxt/components/nuxt.vue"
+Component.options.__file = "/Users/droyer/Playground-2017/nuxtfire/.nuxt/components/nuxt.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] nuxt.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -4702,13 +4702,13 @@ var Component = __webpack_require__(3)(
   /* script */
   null,
   /* template */
-  __webpack_require__(140),
+  __webpack_require__(137),
   /* scopeId */
   null,
   /* cssModules */
   null
 )
-Component.options.__file = "/Users/droyer/Playground-2017/with-firebase/layouts/default.vue"
+Component.options.__file = "/Users/droyer/Playground-2017/nuxtfire/layouts/default.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] default.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -4721,19 +4721,19 @@ module.exports = Component.exports
 
 
 /* styles */
-__webpack_require__(144)
+__webpack_require__(148)
 
 var Component = __webpack_require__(3)(
   /* script */
   __webpack_require__(72),
   /* template */
-  __webpack_require__(139),
+  __webpack_require__(143),
   /* scopeId */
   null,
   /* cssModules */
   null
 )
-Component.options.__file = "/Users/droyer/Playground-2017/with-firebase/pages/about.vue"
+Component.options.__file = "/Users/droyer/Playground-2017/nuxtfire/pages/about.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] about.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -4748,13 +4748,13 @@ var Component = __webpack_require__(3)(
   /* script */
   __webpack_require__(73),
   /* template */
-  __webpack_require__(137),
+  __webpack_require__(141),
   /* scopeId */
   null,
   /* cssModules */
   null
 )
-Component.options.__file = "/Users/droyer/Playground-2017/with-firebase/pages/index.vue"
+Component.options.__file = "/Users/droyer/Playground-2017/nuxtfire/pages/index.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] index.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -4775,11 +4775,11 @@ var Component = __webpack_require__(3)(
   /* template */
   __webpack_require__(142),
   /* scopeId */
-  "data-v-df8cec78",
+  "data-v-bb120d8a",
   /* cssModules */
   null
 )
-Component.options.__file = "/Users/droyer/Playground-2017/with-firebase/pages/posts/_slug.vue"
+Component.options.__file = "/Users/droyer/Playground-2017/nuxtfire/pages/posts/_slug.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] _slug.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -4788,6 +4788,47 @@ module.exports = Component.exports
 
 /***/ }),
 /* 136 */
+/***/ (function(module, exports) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: "error-page"
+  }, [_c('div', [_c('h1', {
+    staticClass: "error-code"
+  }, [_vm._v(_vm._s(_vm.error.statusCode))]), _c('div', {
+    staticClass: "error-wrapper-message"
+  }, [_c('h2', {
+    staticClass: "error-message"
+  }, [_vm._v(_vm._s(_vm.error.message))])]), (_vm.error.statusCode === 404) ? _c('p', [_c('nuxt-link', {
+    staticClass: "error-link",
+    attrs: {
+      "to": "/"
+    }
+  }, [_vm._v("Back to the home page")])], 1) : _vm._e()])])
+},staticRenderFns: []}
+module.exports.render._withStripped = true
+
+/***/ }),
+/* 137 */
+/***/ (function(module, exports) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: "container"
+  }, [_c('div', {
+    staticClass: "header"
+  }, [_c('nav', [_c('h1', {
+    on: {
+      "click": function($event) {
+        _vm.$router.push('/')
+      }
+    }
+  }, [_vm._v("Nuxt.js + Firebase")])])]), _c('nuxt')], 1)
+},staticRenderFns: []}
+module.exports.render._withStripped = true
+
+/***/ }),
+/* 138 */
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -4800,7 +4841,41 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
 module.exports.render._withStripped = true
 
 /***/ }),
-/* 137 */
+/* 139 */
+/***/ (function(module, exports) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: "progress",
+    style: ({
+      'width': _vm.percent + '%',
+      'height': _vm.height,
+      'background-color': _vm.canSuccess ? _vm.color : _vm.failedColor,
+      'opacity': _vm.show ? 1 : 0
+    })
+  })
+},staticRenderFns: []}
+module.exports.render._withStripped = true
+
+/***/ }),
+/* 140 */
+/***/ (function(module, exports) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    attrs: {
+      "id": "__nuxt"
+    }
+  }, [_c('nuxt-loading', {
+    ref: "loading"
+  }), (_vm.layout) ? _c(_vm.layout, {
+    tag: "component"
+  }) : _vm._e()], 1)
+},staticRenderFns: []}
+module.exports.render._withStripped = true
+
+/***/ }),
+/* 141 */
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -4823,85 +4898,6 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       }
     }, [_vm._v(_vm._s(post.title))])]
   })], 2)])])
-},staticRenderFns: []}
-module.exports.render._withStripped = true
-
-/***/ }),
-/* 138 */
-/***/ (function(module, exports) {
-
-module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    attrs: {
-      "id": "__nuxt"
-    }
-  }, [_c('nuxt-loading', {
-    ref: "loading"
-  }), (_vm.layout) ? _c(_vm.layout, {
-    tag: "component"
-  }) : _vm._e()], 1)
-},staticRenderFns: []}
-module.exports.render._withStripped = true
-
-/***/ }),
-/* 139 */
-/***/ (function(module, exports) {
-
-module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    staticClass: "container"
-  }, [_c('ul', {
-    staticClass: "blogLinks"
-  }, [_c('nuxt-link', {
-    attrs: {
-      "to": "/"
-    }
-  }, [_vm._v("Home")]), _c('nuxt-link', {
-    attrs: {
-      "to": "/about"
-    }
-  }, [_vm._v("About")])], 1), _c('h1', [_vm._v("The About Page")])])
-},staticRenderFns: []}
-module.exports.render._withStripped = true
-
-/***/ }),
-/* 140 */
-/***/ (function(module, exports) {
-
-module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    staticClass: "container"
-  }, [_c('div', {
-    staticClass: "header"
-  }, [_c('nav', [_c('h1', {
-    on: {
-      "click": function($event) {
-        _vm.$router.push('/')
-      }
-    }
-  }, [_vm._v("Nuxt.js + Firebase")])])]), _c('nuxt')], 1)
-},staticRenderFns: []}
-module.exports.render._withStripped = true
-
-/***/ }),
-/* 141 */
-/***/ (function(module, exports) {
-
-module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    staticClass: "error-page"
-  }, [_c('div', [_c('h1', {
-    staticClass: "error-code"
-  }, [_vm._v(_vm._s(_vm.error.statusCode))]), _c('div', {
-    staticClass: "error-wrapper-message"
-  }, [_c('h2', {
-    staticClass: "error-message"
-  }, [_vm._v(_vm._s(_vm.error.message))])]), (_vm.error.statusCode === 404) ? _c('p', [_c('nuxt-link', {
-    staticClass: "error-link",
-    attrs: {
-      "to": "/"
-    }
-  }, [_vm._v("Back to the home page")])], 1) : _vm._e()])])
 },staticRenderFns: []}
 module.exports.render._withStripped = true
 
@@ -4934,14 +4930,18 @@ module.exports.render._withStripped = true
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', {
-    staticClass: "progress",
-    style: ({
-      'width': _vm.percent + '%',
-      'height': _vm.height,
-      'background-color': _vm.canSuccess ? _vm.color : _vm.failedColor,
-      'opacity': _vm.show ? 1 : 0
-    })
-  })
+    staticClass: "container"
+  }, [_c('ul', {
+    staticClass: "blogLinks"
+  }, [_c('nuxt-link', {
+    attrs: {
+      "to": "/"
+    }
+  }, [_vm._v("Home")]), _c('nuxt-link', {
+    attrs: {
+      "to": "/about"
+    }
+  }, [_vm._v("About")])], 1), _c('h1', [_vm._v("The About Page")])])
 },staticRenderFns: []}
 module.exports.render._withStripped = true
 
@@ -4956,7 +4956,7 @@ var content = __webpack_require__(121);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add CSS to SSR context
-__webpack_require__(18)("68a501d0", content, false);
+__webpack_require__(18)("39659194", content, false);
 
 /***/ }),
 /* 145 */
@@ -4969,7 +4969,7 @@ var content = __webpack_require__(122);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add CSS to SSR context
-__webpack_require__(18)("7b907f4a", content, false);
+__webpack_require__(18)("2c49c6d5", content, false);
 
 /***/ }),
 /* 146 */
@@ -4982,7 +4982,7 @@ var content = __webpack_require__(123);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add CSS to SSR context
-__webpack_require__(18)("53fbd290", content, false);
+__webpack_require__(18)("b0c35778", content, false);
 
 /***/ }),
 /* 147 */
@@ -4995,7 +4995,7 @@ var content = __webpack_require__(124);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add CSS to SSR context
-__webpack_require__(18)("6a5fe840", content, false);
+__webpack_require__(18)("65d1f70e", content, false);
 
 /***/ }),
 /* 148 */
@@ -5008,7 +5008,7 @@ var content = __webpack_require__(125);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add CSS to SSR context
-__webpack_require__(18)("5b53b390", content, false);
+__webpack_require__(18)("a83351c8", content, false);
 
 /***/ }),
 /* 149 */

@@ -19,6 +19,9 @@ module.exports = {
     // ssr: false to only include it on client-side
     // { src: '~plugins/vuefire.js', ssr: false }
   ],
+  router: {
+    // base: '/nuxtfire/'
+  },
   generate: {
     // routes: [
     //   '/posts/-Ka9cmcSvdhqLspWwCit',
@@ -94,6 +97,10 @@ module.exports = {
   //       _.map(res.data, getKey)
   //     })
   //   }
+  // },
+  // filenames: {
+  //   vendor: 'vendor.[hash].js',
+  //   app: 'app.[chunkhash].js'
   // },
   build: {
     vendor: ['axios']

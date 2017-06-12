@@ -1,9 +1,7 @@
 <template>
   <div class="post">
-    <p><nuxt-link to="/">List of users</nuxt-link></p>
     <h3 v-html="post.title"></h3>
     <div v-html="post.content"></div>
-
   </div>
 </template>
 
