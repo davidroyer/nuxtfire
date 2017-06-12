@@ -1,14 +1,11 @@
 <template>
   <div class="container">
     <div class="header">
-      <nuxt-link to="/admin">Admin</nuxt-link>
+      <nuxt-link to="/">Home</nuxt-link>
+
+      <h1 class="display-2">Admin Layout</h1>
       <nav>
-        <template v-for="(link, key) in links">
-          <nuxt-link tag="li" exact :to="link.href">{{link.title}}</nuxt-link>
-        </template>
-        <template v-for="(post, key) in posts">
-          <li @click="handleRoute(key, post.slug)">{{post.title}}</li>
-        </template>
+        <p>Nav will go here</p>
       </nav>
     </div>
     <nuxt />
@@ -37,34 +34,11 @@ export default {
     }
   },
   created() {
-    this.getPosts()
   },
-  // beforeRouteLeave (to, from, next) {
-  //   // console.log('FIRED');
-  //   //   console.log(this.currentRouteKey);
-  //     // next()
-  //   // called when the route that renders this component is about to
-  //   // be navigated away from.
-  //   // has access to `this` component instance.
-  // },
+
   methods: {
-    getPosts() {
-      axios.get('posts.json')
-      .then((res) => {
-        this.posts = res.data
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
-    },
-    handleRoute(key, slug) {
-      Store.setCurrentKey(key)
-      localStorage.setItem('currentKey', key);
-      this.$router.push({ path: `/posts/${slug}` })
-    },
-    handleNuxtLink(key) {
-      this.currentRouteKey = key
-      Store.setCurrentKey(key)
+    saveNewPos() {
+
     }
   }
 }

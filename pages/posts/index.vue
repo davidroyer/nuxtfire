@@ -1,9 +1,6 @@
 <template>
   <div class="post" >
-    <div v-if="post" :key="post.slug">
-      <h3 v-html="post.title"></h3>
-      <div v-html="post.content"></div>
-    </div>
+      <h1 class="title">INDEX.VUE</h1>
   </div>
 </template>
 

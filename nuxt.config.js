@@ -1,5 +1,6 @@
 var _ = require('lodash');
 const axios = require('axios')
+const { join } = require('path')
 
 module.exports = {
   head: {
@@ -8,14 +9,13 @@ module.exports = {
       { name: 'viewport', content: 'width=device-width, initial-scale=1' }
     ],
     link: [
-      { rel: 'stylesheet', href: 'https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css' }
+      { rel: 'stylesheet', href: 'https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css' },
+      { rel: 'preload', as: 'style', href: 'https://fonts.googleapis.com/css?family=Roboto' },
+      { rel: 'preload', as: 'style', href: 'https://fonts.googleapis.com/icon?family=Material+Icons' }
     ]
   },
-  plugins: [
-    // ssr: false to only include it on client-side
-    // { src: '~plugins/vuefire.js', ssr: false }
-  ],
   css: [
+    { src: '~assets/css/app.styl', lang: 'styl' },
     { src: '~assets/css/main.scss', lang: 'scss'}
   ],
   generate: {
@@ -50,6 +50,13 @@ module.exports = {
     //   ]
     // }
   },
+  build: {
+    vendor: ['axios', 'vuetify']
+  },
+  plugins: ['~plugins/vuetify.js']
+    // ssr: false to only include it on client-side
+    // { src: '~plugins/vue-material.js' }
+
   // routeParams: {
   //     '/users/:id': function () {
   //       return axios.get(YOUR_API_URL)
@@ -93,7 +100,5 @@ module.exports = {
   //   vendor: 'vendor.[hash].js',
   //   app: 'app.[chunkhash].js'
   // },
-  build: {
-    vendor: ['axios']
-  }
+
 }
