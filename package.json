@@ -7,7 +7,7 @@
     "build": "nuxt build",
     "start": "nuxt start",
     "generate": "nuxt generate",
-    "gdeploy": "nuxt generate && gh-pages -d dist -b gh-pages",
+    "gdeploy": "nuxt generate && gh-pages -d dist -b gh-pages"
   },
   "keywords": [
     "nuxt",
