@@ -1,7 +1,9 @@
 <template>
-  <div class="post">
-    <h3 v-html="post.title"></h3>
-    <div v-html="post.content"></div>
+  <div class="post" >
+    <div v-if="post" :key="$route.fullPath">
+      <h3 v-html="post.title"></h3>
+      <div v-html="post.content"></div>
+    </div>
   </div>
 </template>
 
@@ -9,14 +11,57 @@
 import axios from 'axios'
 var dataStore = require('../../services/dataStore.js')
 var Store = dataStore.store
-export default {
-  async data( route ) {
-    const { key } = Store.state.currentKey
-    const { data } = await axios.get(`https://nuxtfire.firebaseio.com/posts/${Store.state.currentKey}.json`)
+if (process.browser) {
+  var storageKey = localStorage.currentKey
+  console.log(storageKey);
+  console.log('Current Key:  ', Store.state.currentKey);
+}
 
+export default {
+  // async data( route ) {
+  //   // const { key } = Store.state.currentKey
+  //   const { data } = await axios.get(`https://nuxtfire.firebaseio.com/posts/${Store.state.currentKey}.json`)
+  //
+  //   return {
+  //     post: data,
+  //     currentKey: Store.state.currentKey
+  //   }
+  // },
+  data() {
     return {
-      post: data
+      currentKey: Store.state.currentKey,
+      // testStorageKey: localStorage.currentKey,
+      post: {}
     }
+  },
+  watch: {
+    '$route': 'getPost'
+  },
+  computed: {
+    updatedKey: function() {
+      if (process.browser) {
+        return localStorage.currentKey
+      }
+    }
+  },
+  methods: {
+    getPost() {
+
+      if (process.browser) {
+        var key = localStorage.currentKey
+        axios.get(`https://nuxtfire.firebaseio.com/posts/${key}.json`)
+          .then((res) => {
+            this.post = res.data
+          })
+          .catch(function (error) {
+            console.log(error);
+          });
+      }
+
+    }
+  },
+  created() {
+    this.getPost()
   }
   // data() {
   //   return {

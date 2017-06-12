@@ -1,10 +1,6 @@
 var _ = require('lodash');
 const axios = require('axios')
 
-function getKey(post, k) {
-  return {key: k}
-}
-
 module.exports = {
   head: {
     meta: [
@@ -19,15 +15,10 @@ module.exports = {
     // ssr: false to only include it on client-side
     // { src: '~plugins/vuefire.js', ssr: false }
   ],
-  router: {
-    // base: '/nuxtfire/'
-  },
+  css: [
+    { src: '~assets/css/main.scss', lang: 'scss'}
+  ],
   generate: {
-    // routes: [
-    //   '/posts/-Ka9cmcSvdhqLspWwCit',
-    //   '/posts/-KaBE82Zbzx2pb73uKLF',
-    //   '/posts/-KaBMaJ8Hoac8-jTyAdF'
-    // ],
     routes: function() {
       return axios.get('https://nuxtfire.firebaseio.com/posts.json')
       .then((res) => {

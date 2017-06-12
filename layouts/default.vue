@@ -38,14 +38,14 @@ export default {
   created() {
     this.getPosts()
   },
-  beforeRouteLeave (to, from, next) {
-    console.log('FIRED');
-      console.log(this.currentRouteKey);
-      // next()
-    // called when the route that renders this component is about to
-    // be navigated away from.
-    // has access to `this` component instance.
-  },
+  // beforeRouteLeave (to, from, next) {
+  //   // console.log('FIRED');
+  //   //   console.log(this.currentRouteKey);
+  //     // next()
+  //   // called when the route that renders this component is about to
+  //   // be navigated away from.
+  //   // has access to `this` component instance.
+  // },
   methods: {
     getPosts() {
       axios.get('posts.json')
@@ -58,6 +58,7 @@ export default {
     },
     handleRoute(key, slug) {
       Store.setCurrentKey(key)
+      localStorage.setItem('currentKey', key);
       this.$router.push({ path: `/posts/${slug}` })
     },
     handleNuxtLink(key) {
