@@ -57,7 +57,7 @@ module.exports = {
     }
   },
   build: {
-    vendor: ['axios', 'vuetify']
+    vendor: ['axios', 'vuetify', 'firebase']
     // postcss: [
     //   require('postcss-uncss')({
     //     html: ['https://nuxtfire.firebaseapp.com/'],

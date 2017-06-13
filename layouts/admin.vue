@@ -12,9 +12,9 @@
   </div>
 </template>
 <script>
-import axios from '~plugins/axios'
-var dataStore = require('../services/dataStore.js')
-var Store = dataStore.store
+// import axios from '~plugins/axios'
+// var dataStore = require('../services/dataStore.js')
+// var Store = dataStore.store
 
 export default {
   data() {
@@ -46,7 +46,7 @@ export default {
 <style>
 
 body {
-  padding-top: 1.5rem;
+  /*padding-top: 1.5rem;*/
 }
 
 nav {

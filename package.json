@@ -7,6 +7,7 @@
     "build": "nuxt build",
     "start": "nuxt start",
     "generate": "nuxt generate",
+    "check": "nuxt build -a",
     "gdeploy": "nuxt generate && gh-pages -d dist -b gh-pages",
     "fdeploy": "nuxt generate && firebase deploy"
   },

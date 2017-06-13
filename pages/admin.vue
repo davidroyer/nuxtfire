@@ -29,7 +29,7 @@ var dataStore = require('../services/dataStore.js')
 var Store = dataStore.store
 var Auth = Store.state.auth
 console.log(Auth);
-const _ = require('lodash')
+// const _ = require('lodash')
 export default {
   // layout: 'admin',
   data() {
