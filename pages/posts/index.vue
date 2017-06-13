@@ -1,6 +1,6 @@
 <template>
   <div class="post" >
-      <h1 class="title">INDEX.VUE</h1>
+      <h1 class="display-1">INDEX.VUE</h1>
   </div>
 </template>
 

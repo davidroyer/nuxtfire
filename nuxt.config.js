@@ -9,7 +9,6 @@ module.exports = {
       { name: 'viewport', content: 'width=device-width, initial-scale=1' }
     ],
     link: [
-      { rel: 'stylesheet', href: 'https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css' },
       { rel: 'preload', as: 'style', href: 'https://fonts.googleapis.com/css?family=Roboto' },
       { rel: 'preload', as: 'style', href: 'https://fonts.googleapis.com/icon?family=Material+Icons' }
     ]
@@ -17,6 +16,19 @@ module.exports = {
   css: [
     { src: '~assets/css/app.styl', lang: 'styl' },
     { src: '~assets/css/main.scss', lang: 'scss'}
+  ],
+  modules: [
+    {
+      src: '@nuxtjs/firebase',
+      options: {
+        apiKey: "AIzaSyCz8gCkmdI8jV-jB9_2sgH2rP1s7CyuiAY",
+        authDomain: "nuxtfire.firebaseapp.com",
+        databaseURL: "https://nuxtfire.firebaseio.com",
+        projectId: "nuxtfire",
+        storageBucket: "nuxtfire.appspot.com",
+        messagingSenderId: "355187584526"
+      }
+    }
   ],
   generate: {
     routes: function() {

@@ -1,9 +1,11 @@
 <template>
-  <div class="post" >
-    <div v-if="post" :key="post.slug">
-      <h3 v-html="post.title"></h3>
-      <div v-html="post.content"></div>
-    </div>
+  <div class="post">
+<transition name="fade" mode="out-in">
+  <div :key="$route.params.slug">
+    <h3 v-html="post.title"></h3>
+    <div v-html="post.content"></div>
+  </div>
+</transition>
   </div>
 </template>
 
@@ -18,24 +20,47 @@ if (process.browser) {
 }
 
 export default {
-  // async data( route ) {
-  //   // const { key } = Store.state.currentKey
-  //   const { data } = await axios.get(`https://nuxtfire.firebaseio.com/posts/${Store.state.currentKey}.json`)
+  // async asyncData ({ params }) {
+  //   // We can use async/await ES6 feature
+  //   console.log('fired');
+  //   let { data } = await axios.get(`https://nuxtfire.firebaseio.com/posts.json?orderBy="slug"&equalTo="${params.slug}"&print=pretty`)
+  //   // var postData = post.data
+  //   var keys = Object.keys(data)
+  //   var key = keys[0]
+  //   // this.currentPost = data[key]
   //
-  //   return {
-  //     post: data,
-  //     currentKey: Store.state.currentKey
-  //   }
+  //   return { post: data[key] }
   // },
-  data() {
+  head () {
     return {
-      currentKey: Store.state.currentKey,
-      // testStorageKey: localStorage.currentKey,
-      post: {}
+      // title: this.post.title
     }
   },
+  async data( route ) {
+    const slug = route.params.slug
+    // console.log(slug);
+    console.log(slug);
+    const { data } = await
+    //  axios.get(`https://nuxtfire.firebaseio.com/posts/${Store.state.currentKey}.json`)
+     axios.get(`https://nuxtfire.firebaseio.com/posts.json?orderBy="slug"&equalTo="${slug}"&print=pretty`)
+     var keys = Object.keys(data)
+     var key = keys[0]
+     var postData = data[key]
+    return {
+      post: postData,
+
+      // currentKey: Store.state.currentKey
+    }
+  },
+  // data() {
+  //   return {
+  //     currentKey: Store.state.currentKey
+  //     // testStorageKey: localStorage.currentKey,
+  //     // post: {}
+  //   }
+  // },
   watch: {
-    '$route': 'getPost'
+    // '$route': 'getPost'
   },
   computed: {
     updatedKey: function() {
@@ -46,22 +71,31 @@ export default {
   },
   methods: {
     getPost() {
-
-      if (process.browser) {
-        var key = localStorage.currentKey
-        axios.get(`https://nuxtfire.firebaseio.com/posts/${key}.json`)
-          .then((res) => {
-            this.post = res.data
-          })
-          .catch(function (error) {
-            console.log(error);
-          });
-      }
+      // if (process.browser) {
+      //   var slug = 'title-one'
+      //   axios.get(`posts.json?orderBy="slug"&equalTo="${slug}"&print=pretty`)
+      //   .then((post) => {
+      //     console.log('TEST FIRE HERE');
+      //     console.log(post);
+      //   })
+      //   .catch(function (error) {
+      //     console.log(error);
+      //   });
+      //
+      //   var key = localStorage.currentKey
+      //   axios.get(`https://nuxtfire.firebaseio.com/posts/${key}.json`)
+      //     .then((res) => {
+      //       this.post = res.data
+      //     })
+      //     .catch(function (error) {
+      //       console.log(error);
+      //     });
+      // }
 
     }
   },
   created() {
-    this.getPost()
+    // this.getPost()
   }
   // data() {
   //   return {
@@ -96,6 +130,15 @@ export default {
 </script>
 
 <style scoped>
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.35s;
+}
+
+.fade-enter,
+.fade-leave-active {
+  opacity: 0;
+}
 .user {
   text-align: center;
   margin-top: 100px;

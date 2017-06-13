@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <h1>Home Page</h1>
+  <div class="">
+    <h1 class="display-1">Home Page</h1>
   </div>
 </template>
 
@@ -8,7 +8,7 @@
 import axios from '~plugins/axios'
 var dataStore = require('../services/dataStore.js')
 var Store = dataStore.store
-
+console.log(dataStore);
 function getKey(post, key) {
   console.log(post);
   return {key: key}
@@ -34,6 +34,8 @@ export default {
   // },
   mounted() {
     this.getPosts()
+    console.log(this);
+    console.log(this.$firebase);
   },
   methods: {
     getPosts() {

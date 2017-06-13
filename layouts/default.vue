@@ -1,27 +1,93 @@
 <template>
-  <div class="container">
-    <div class="header">
-      <nuxt-link to="/admin">Admin</nuxt-link>
-      <nav>
-        <template v-for="(link, key) in links">
-          <nuxt-link tag="li" exact :to="link.href">{{link.title}}</nuxt-link>
-        </template>
-        <template v-for="(post, key) in posts">
-          <li @click="handleRoute(key, post.slug)">{{post.title}}</li>
-        </template>
-      </nav>
-    </div>
-    <nuxt />
-  </div>
+  <v-app>
+
+     <v-navigation-drawer
+       persistent
+       :disable-route-watcher="false"
+       enable-resize-watcher
+       v-model="drawerOpen"
+     >
+       <v-list>
+         <v-list-item
+           v-for="(link, i) in links"
+           :key="link.href">
+           <v-list-tile
+             router
+             :to="link.href">
+             <v-list-tile-content>
+               <v-list-tile-title v-text="link.title"></v-list-tile-title>
+             </v-list-tile-content>
+           </v-list-tile>
+         </v-list-item>
+
+         <v-divider></v-divider>
+         <v-subheader light>Blog Posts</v-subheader>
+
+         <v-list-item
+           v-for="(post, key) in blogPosts"
+           :key="key">
+           <v-list-tile
+             router
+             :to="`/posts/${post.slug}`">
+             <v-list-tile-content>
+               <v-list-tile-title v-text="post.title"></v-list-tile-title>
+             </v-list-tile-content>
+           </v-list-tile>
+         </v-list-item>
+
+         <!-- <v-list-item
+           key="admin">
+           <v-list-tile
+             router
+             to="/admin">
+             <v-list-tile-action>
+               <v-icon light small right>account_box</v-icon>
+             </v-list-tile-action>
+             <v-list-tile-content>
+
+
+               <v-list-tile-title>Admin</v-list-tile-title>
+             </v-list-tile-content>
+           </v-list-tile>
+         </v-list-item> -->
+       </v-list>
+       <v-divider></v-divider>
+       <v-btn
+         light
+         key="admin"
+         router
+         to="/admin"
+         class="blue-grey">
+         Admin
+         <v-icon right light>account_circle</v-icon>
+       </v-btn>
+     </v-navigation-drawer>
+    <v-toolbar class="secondary" light>
+      <v-toolbar-side-icon @click.native.stop="drawerOpen = !drawerOpen" right light></v-toolbar-side-icon>
+      <v-toolbar-title>David Royer</v-toolbar-title>
+    </v-toolbar>
+    <main>
+      <v-container fluid>
+        <nuxt />
+
+        <!-- <v-slide-y-transition mode="out-in">
+          <nuxt />
+        </v-slide-y-transition> -->
+      </v-container>
+    </main>
+    <!-- <nuxt /> -->
+  </v-app>
 </template>
+
 <script>
 import axios from '~plugins/axios'
 var dataStore = require('../services/dataStore.js')
 var Store = dataStore.store
-
+const State = Store.state
 export default {
   data() {
     return {
+      drawerOpen: false,
       currentRouteKey: '',
       links: [{
         href: '/',
@@ -33,11 +99,22 @@ export default {
         href: '/contact',
         title: 'Contact'
       }],
-      posts: {}
+      blogPosts: {},
+      currentPost: {}
     }
   },
+  computed: {
+    computedPosts() {
+      return State.posts
+    }
+  },
+  beforeCreate() {
+
+  },
   created() {
+    // this.getPostsFromStore()
     this.getPosts()
+    // this.testFire()
   },
   // beforeRouteLeave (to, from, next) {
   //   // console.log('FIRED');
@@ -48,10 +125,14 @@ export default {
   //   // has access to `this` component instance.
   // },
   methods: {
+    getPostsFromStore() {
+      Store.GetPosts()
+      // console.log('');
+    },
     getPosts() {
       axios.get('posts.json')
       .then((res) => {
-        this.posts = res.data
+        this.blogPosts = res.data
       })
       .catch(function (error) {
         console.log(error);
@@ -72,11 +153,11 @@ export default {
 <style>
 
 body {
-  padding-top: 1.5rem;
+padding-top: 0 !important;
 }
 
 nav {
-  padding: 1.5rem 0;
+  /*padding: 1.5rem 0;*/
 }
 
 h1 {
@@ -94,9 +175,13 @@ h1 {
   cursor: pointer;
 }
 
+.toolbar ul {
+  margin-bottom: 0;
+}
 nav li {
-  color: darkblue;
+  /*color: darkblue;*/
   cursor: pointer;
+  color: darkpurple;
   list-style-type: none;
   transition: all .35s ease-in-out;
   padding: 0 1em;
@@ -105,11 +190,27 @@ nav li {
   margin: .5em;
 }
 
+.toolbar li {
+    color: white;
+}
+
 nav li:hover {
   border-bottom: 2px solid darkblue;
 }
 
 li.nuxt-link-active {
     font-weight: 800;
+}
+.nuxt-link-active.list__tile .list__tile__title {
+    font-weight: 500;
+    color: #94cdfa;
+    text-decoration: none;
+}
+.nuxt-link-active.list__tile {
+  text-decoration: none;
+}
+.navigation-drawer > .list .list__tile {
+    /*transition: none;*/
+    text-decoration: none;
 }
 </style>
