@@ -33,24 +33,24 @@ export default {
   // },
   head () {
     return {
-      // title: this.post.title
+      title: this.post.title
     }
   },
   async data( route ) {
     const slug = route.params.slug
-    // console.log(slug);
-    console.log(slug);
+
     const { data } = await
     //  axios.get(`https://nuxtfire.firebaseio.com/posts/${Store.state.currentKey}.json`)
      axios.get(`https://nuxtfire.firebaseio.com/posts.json?orderBy="slug"&equalTo="${slug}"&print=pretty`)
      var keys = Object.keys(data)
      var key = keys[0]
      var postData = data[key]
-    return {
-      post: postData,
 
-      // currentKey: Store.state.currentKey
-    }
+      return {
+        post: postData,
+
+        // currentKey: Store.state.currentKey
+      }
   },
   // data() {
   //   return {

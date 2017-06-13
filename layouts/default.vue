@@ -28,6 +28,7 @@
            :key="key">
            <v-list-tile
              router
+             exact
              :to="`/posts/${post.slug}`">
              <v-list-tile-content>
                <v-list-tile-title v-text="post.title"></v-list-tile-title>

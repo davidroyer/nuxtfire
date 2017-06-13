@@ -3,14 +3,20 @@ const axios = require('axios')
 const { join } = require('path')
 
 module.exports = {
+
   head: {
+    title: 'David Royer - Web Designer & Developer',
+    titleTemplate: '%s - David Royer - Web Designer & Developer',
     meta: [
       { charset: 'utf-8' },
-      { name: 'viewport', content: 'width=device-width, initial-scale=1' }
+      { name: 'viewport', content: 'width=device-width, initial-scale=1' },
+      { hid: 'description', name: 'description', content: 'Personal site of David Royer. Front-End Web Designer and Developer' }
     ],
     link: [
       { rel: 'preload', as: 'style', href: 'https://fonts.googleapis.com/css?family=Roboto' },
+      // { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
       { rel: 'preload', as: 'style', href: 'https://fonts.googleapis.com/icon?family=Material+Icons' }
+
     ]
   },
   css: [
@@ -41,76 +47,22 @@ module.exports = {
     },
     routeParams: {
       '/posts/:slug': function() {
-          return axios.get('https://nuxtfire.firebaseio.com/posts.json')
-          .then((res) => {
-            // return res.data.map((post, key) => {
-            //   return {key: key}
-            // })
-            return _.map(res.data, function(post, key) {
-              return {slug: post.slug}
-            })
-            // return postArr
+        return axios.get('https://nuxtfire.firebaseio.com/posts.json')
+        .then((res) => {
+          return _.map(res.data, function(post, key) {
+            return {slug: post.slug}
           })
-
+        })
       }
     }
-    // routeParams: {
-    //   '/posts/:key': [
-    //     {key: '-Ka9cmcSvdhqLspWwCit'},
-    //     {key: '-KaBE82Zbzx2pb73uKLF'},
-    //     {key: '-KaBMaJ8Hoac8-jTyAdF'}
-    //   ]
-    // }
   },
   build: {
     vendor: ['axios', 'vuetify']
+    // postcss: [
+    //   require('postcss-uncss')({
+    //     html: ['https://nuxtfire.firebaseapp.com/'],
+    //   })
+    // ]
   },
   plugins: ['~plugins/vuetify.js']
-    // ssr: false to only include it on client-side
-    // { src: '~plugins/vue-material.js' }
-
-  // routeParams: {
-  //     '/users/:id': function () {
-  //       return axios.get(YOUR_API_URL)
-  //       .then((res) {
-  //          // res.data should be like [{id: 1}, {id: 2}...]
-  //          return res.data
-  //       })
-  //     }
-  //  }
-  // generate: {
-  //   routes: function () {
-  //     return axios.get('https://nuxtfire.firebaseio.com/posts')
-  //     .then((res) => {
-  //       return res.data.map((post, key) => {
-  //         return '/posts/' + key
-  //       })
-  //     })
-  //   },
-  //   routeParams: {
-  //     '/posts/:key': function() {
-  //       return axios.get('https://nuxtfire.firebaseio.com/posts')
-  //         .then((res) => {
-  //           var postArr = _.map(res.data, function(post, key) {
-  //             return {'key': key}
-  //           })
-  //           return postArr
-  //         })
-  //
-  //     }
-  //   }
-  // },
-  // generate: {
-  //   routes: function () {
-  //     return axios.get('https://nuxtfire.firebaseio.com/posts')
-  //     .then((res) => {
-  //       _.map(res.data, getKey)
-  //     })
-  //   }
-  // },
-  // filenames: {
-  //   vendor: 'vendor.[hash].js',
-  //   app: 'app.[chunkhash].js'
-  // },
-
 }
