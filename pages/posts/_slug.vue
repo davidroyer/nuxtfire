@@ -33,10 +33,10 @@ export default {
   // },
   head () {
     return {
-      title: this.post.title
+      // title: this.post.title
     }
   },
-  async data( route ) {
+  async asyncData( route ) {
     const slug = route.params.slug
 
     const { data } = await

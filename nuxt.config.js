@@ -14,27 +14,22 @@ module.exports = {
     ],
     link: [
       { rel: 'preload', as: 'style', href: 'https://fonts.googleapis.com/css?family=Roboto' },
+      // <link href="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.css" rel="stylesheet" data-n-head="true">
+      // /css/mavonEditor.css
       // { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
       { rel: 'preload', as: 'style', href: 'https://fonts.googleapis.com/icon?family=Material+Icons' }
 
     ]
   },
   css: [
+    { src: '~assets/css/editor.css', lang: 'css'},
     { src: '~assets/css/app.styl', lang: 'styl' },
     { src: '~assets/css/main.scss', lang: 'scss'}
   ],
-  modules: [
-    {
-      src: '@nuxtjs/firebase',
-      options: {
-        apiKey: "AIzaSyCz8gCkmdI8jV-jB9_2sgH2rP1s7CyuiAY",
-        authDomain: "nuxtfire.firebaseapp.com",
-        databaseURL: "https://nuxtfire.firebaseio.com",
-        projectId: "nuxtfire",
-        storageBucket: "nuxtfire.appspot.com",
-        messagingSenderId: "355187584526"
-      }
-    }
+  plugins: [
+    '~plugins/vuetify.js',
+    { src: '~plugins/vue2-editor.js', ssr: false }
+    // '~plugins/mavon-editor.js'
   ],
   generate: {
     routes: function() {
@@ -57,12 +52,25 @@ module.exports = {
     }
   },
   build: {
+    loaders: [
+      {
+        test: /\.md$/,
+        loader: 'vue-markdown-loader'
+      }
+      // {
+      //   test: /\.(woff|ttf|eot|svg)/,
+      //   loader: 'file-loader?name=font/[name].[ext]&publicPath=../'
+      // },
+      // {
+      //   test: /\.(png|woff|woff2|eot|ttf|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
+      //   loader: 'url'
+      // }
+    ],
     vendor: ['axios', 'vuetify', 'firebase']
     // postcss: [
     //   require('postcss-uncss')({
     //     html: ['https://nuxtfire.firebaseapp.com/'],
     //   })
     // ]
-  },
-  plugins: ['~plugins/vuetify.js']
+  }
 }

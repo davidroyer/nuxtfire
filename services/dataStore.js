@@ -45,5 +45,8 @@ export const store = {
       .catch(function (error) {
         console.log(error);
       });
+  },
+  SavePost() {
+    console.log('ran');
   }
 }

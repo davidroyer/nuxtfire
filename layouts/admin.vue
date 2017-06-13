@@ -2,7 +2,7 @@
   <div class="container">
     <div class="header">
       <nuxt-link to="/">Home</nuxt-link>
-
+    
       <h1 class="display-2">Admin Layout</h1>
       <nav>
         <p>Nav will go here</p>
