@@ -16,7 +16,7 @@ console.log(simplemde);
 }
 
 export default {
-  name: 'mde',
+  name: 'Mde',
   components: {
 
   },

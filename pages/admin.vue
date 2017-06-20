@@ -53,7 +53,7 @@
 <script>
 import axios from '~plugins/axios'
 import marked from 'marked'
-import mde from '~components/mde'
+import Mde from '~components/Mde'
 var _ = require('lodash')
 var dataStore = require('../services/dataStore.js')
 var Store = dataStore.store
@@ -62,7 +62,7 @@ var Auth = Store.state.auth
 
 export default {
   components: {
-    mde
+    Mde
   },
   layout: 'admin',
   data () {
