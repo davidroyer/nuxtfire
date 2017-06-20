@@ -1,17 +1,44 @@
 <template>
   <div class="">
-    <h1 class="display-1">About Me</h1>
-    <div class="markdownBody">
-      <test></test>
-    </div>
+    <h1 class="display-1">About</h1>
+      <!-- <div class="content" v-html="content"></div> -->
+    
   </div>
 </template>
 
 <script>
-import test from '../static/test1.md'
-console.log(test);
+import axios from 'axios'
+import marked from 'marked'
+const FM = require('front-matter')
+
+
+
+// const test = require('~static/blog/posts.json').map(post.slug => `/blog/posts/${slug}`);
+// console.log('HELLOOO');
+// console.log(test)
+
+
 export default {
-  components: {test}
+  // components: {test},
+  head () {
+    return {
+      title: this.title
+    }
+  },
+  async asyncData({env}) {
+
+    // const {data} = await axios.get('/blog/test2.md')
+    // http://localhost:3000/blog/posts.json
+    // var postData = FM(data)
+    //
+    // var attributes =  postData.attributes
+    // var content =  postData.body
+    // return {
+    //   title: attributes.title,
+    //   content: marked(content, { sanitize: true }),
+    //   // markdownFile: marked(data, { sanitize: true })
+    // }
+  }
 }
 </script>
 

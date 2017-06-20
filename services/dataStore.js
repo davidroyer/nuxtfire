@@ -1,15 +1,31 @@
-let api, auth
+let api, auth, storage
 import Firebase from 'firebase/app'
 import 'firebase/database'
 import 'firebase/auth'
+import 'firebase/storage'
 import axios from '~plugins/axios.js'
-// export function createAPI ({ config, version }) {
-//   Firebase.initializeApp(config)
-//   return Firebase.database().ref(version)
-// }
-if (process.browser) {
-  // firebase = require('firebase')
 
+const BlogUrl = '/posts'
+
+function slugify(input) {
+  let output = input.toLowerCase()
+   .replace(/[^\w\s-]/g, '') // remove non-word [a-z0-9_], non-whitespace, non-hyphen characters
+   .replace(/[\s_-]+/g, '-') // swap any length of whitespace, underscore, hyphen characters with a single -
+   .replace(/^-+|-+$/g, ''); // remove leading, trailing -
+  return output
+}
+
+function titleCase (input) {
+  if ((input===null) || (input===''))
+       return false;
+  else
+   input = input.toString();
+
+  return input.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
+}
+
+
+if (process.browser) {
   var config = {
     apiKey: "AIzaSyCz8gCkmdI8jV-jB9_2sgH2rP1s7CyuiAY",
     authDomain: "nuxtfire.firebaseapp.com",
@@ -18,11 +34,11 @@ if (process.browser) {
     storageBucket: "nuxtfire.appspot.com",
     messagingSenderId: "355187584526"
   };
-  // var firebaseApp = firebase.initializeApp(config)
   Firebase.initializeApp(config)
+  storage = Firebase.storage()
   api = Firebase.database().ref()
   auth = Firebase.auth()
-  console.log(auth);
+
 }
 export const store = {
   state: {
@@ -30,7 +46,10 @@ export const store = {
     mainMenuIsOpen: false,
     api: api,
     auth: auth,
-    posts: {}
+    storage: storage,
+    posts: {},
+    testPosts: [],
+    testPost: ''
   },
 
   setCurrentKey(key) {
@@ -46,7 +65,80 @@ export const store = {
         console.log(error);
       });
   },
-  SavePost() {
-    console.log('ran');
+
+  SaveNewPost(post) {
+    axios.post(`${BlogUrl}.json`, {
+      title: titleCase(post.title),
+      content: post.content,
+      slug: slugify(post.title)
+    })
+    .then(function (response) {
+      console.log(response);
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
+  },
+
+  UpdatePost(post) {
+    let key = post.key
+    axios.put(`${BlogUrl}/${key}.json`, {
+      title: titleCase(post.title),
+      content: post.content,
+      image: post.image,
+      slug: slugify(post.title)
+    })
+    .then(function (response) {
+      console.log(response);
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
+  },
+
+  DeletePost(key) {
+    axios.delete(`${BlogUrl}/${key}.json`)
+    .then(function (response) {
+      console.log(response);
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
+  },
+
+  GetTestPost() {
+    axios.get('https://jsonplaceholder.typicode.com/posts/1')
+    .then((res) => {
+      console.log(res.body);
+      return res.body
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
+
+  },
+
+  UploadImage(postKey, event) {
+    console.log(postKey);
+    let file = event.target.files[0]
+    let newFileRef = storage.ref(`${file.name}`)
+    let uploadTask = newFileRef.put(file)
+
+    uploadTask.on('state_changed', (snapshot) => {
+      // vm.uploadProgress.percentage = Math.round((snapshot.bytesTransferred / snapshot.totalBytes) * 100);
+    }, (error) => {
+      console.log(error);
+    }, () => {
+
+      axios.patch(`${BlogUrl}/${postKey}.json`, {
+        image: uploadTask.snapshot.downloadURL
+      })
+      .then(function (response) {
+        console.log(response);
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+    })
   }
 }

@@ -8,6 +8,12 @@
        v-model="drawerOpen"
      >
        <v-list>
+         <!-- <nuxt-link to="/post/test1">Post 1</nuxt-link>
+         <nuxt-link to="/post/test2">Post 2</nuxt-link> -->
+         <!-- <hr>
+         <nuxt-link to="/test/test1">Post 1</nuxt-link>
+         <nuxt-link to="/test/test2">Post 2</nuxt-link>
+         <nuxt-link to="/test/test3">Post 3</nuxt-link> -->
          <v-list-item
            v-for="(link, i) in links"
            :key="link.href">
@@ -21,21 +27,36 @@
          </v-list-item>
 
          <v-divider></v-divider>
-         <v-subheader light>Blog Posts</v-subheader>
+         <v-subheader light>Fire Posts</v-subheader>
 
          <v-list-item
-           v-for="(post, key) in blogPosts"
+           v-for="(post, key) in firePosts"
            :key="key">
            <v-list-tile
              router
              exact
-             :to="`/posts/${post.slug}`">
+             :to="`/fire/${post.slug}`">
              <v-list-tile-content>
                <v-list-tile-title v-text="post.title"></v-list-tile-title>
              </v-list-tile-content>
            </v-list-tile>
          </v-list-item>
 
+
+         <v-divider></v-divider>
+         <v-subheader light>Fire Store Posts</v-subheader>
+         <v-list-item
+           v-for="(post, key) in computedPosts"
+           :key="key">
+           <v-list-tile
+             router
+             exact
+             :to="`/fire/${post.slug}`">
+             <v-list-tile-content>
+               <v-list-tile-title v-text="post.title"></v-list-tile-title>
+             </v-list-tile-content>
+           </v-list-tile>
+         </v-list-item>
          <!-- <v-list-item
            key="admin">
            <v-list-tile
@@ -96,17 +117,21 @@ export default {
       }, {
         href: '/about',
         title: 'About'
+      // }, {
+      //   href: '/markdown',
+      //   title: 'Markdown'
       }, {
         href: '/contact',
         title: 'Contact'
       }],
-      blogPosts: {},
+      firePosts: State.posts,
       currentPost: {}
+      // postsFromStore: State
     }
   },
   computed: {
     computedPosts() {
-      return State.posts
+      // return State.posts
     }
   },
   beforeCreate() {
@@ -114,8 +139,12 @@ export default {
   },
   created() {
     // this.getPostsFromStore()
-    this.getPosts()
+
     // this.testFire()
+  },
+  mounted() {
+    this.getPosts()
+    this.getPostsFromStore()
   },
   // beforeRouteLeave (to, from, next) {
   //   // console.log('FIRED');
@@ -133,7 +162,7 @@ export default {
     getPosts() {
       axios.get('posts.json')
       .then((res) => {
-        this.blogPosts = res.data
+        this.firePosts = res.data
       })
       .catch(function (error) {
         console.log(error);
@@ -213,5 +242,43 @@ li.nuxt-link-active {
 .navigation-drawer > .list .list__tile {
     /*transition: none;*/
     text-decoration: none;
+}
+.ql-snow .ql-stroke {
+  stroke: #444444 !important;
+  stroke-width: 1.75 !important;
+  stroke-linecap: square;
+}
+
+
+.ql-snow .ql-fill, .ql-snow .ql-stroke.ql-fill {
+    fill: #444444;
+}
+.ql-indent polyline.ql-stroke {
+    stroke-width: 1 !important;
+    stroke-linejoin: miter;
+    fill: #444 ;
+}
+
+.ql-toolbar.ql-snow {
+    display: flex;
+    flex-flow: row wrap;
+}
+
+.ql-snow .ql-toolbar button, .ql-snow.ql-toolbar button {
+    margin-bottom: 0;
+    height: 28px !important;
+    height: auto;
+}
+
+.ql-snow .ql-stroke.ql-thin, .ql-snow .ql-thin {
+    stroke-width: 1 !important;
+}
+
+.ql-snow .ql-color-picker .ql-picker-label, .ql-snow .ql-icon-picker .ql-picker-label {
+    padding: 0;
+}
+
+.ql-snow .ql-color-picker, .ql-snow .ql-icon-picker {
+    width: 24px;
 }
 </style>

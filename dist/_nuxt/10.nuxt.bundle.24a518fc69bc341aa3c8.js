@@ -1,0 +1,6 @@
+webpackJsonp([10],{250:function(n,e,t){var r=t(27)(t(301),t(324),null,null,null);n.exports=r.exports},288:function(n,e,t){"use strict";/*!
+ * vue-no-ssr v0.1.2
+ * (c) 2017-present egoist <0x142857@gmail.com>
+ * Released under the MIT License.
+ */
+var r={name:"no-ssr",props:["placeholder"],data:function(){return{canRender:!1}},mounted:function(){this.canRender=!0},render:function(n){return this.canRender?this.$slots.default[0]:n(this.placeholder)}};n.exports=r},301:function(n,e,t){"use strict";Object.defineProperty(e,"__esModule",{value:!0});var r=t(38),s=t.n(r),a=t(37),o=t.n(a),c=t(288),u=t.n(c);e.default={components:{"no-ssr":u.a},data:function(){return{d_language:"en",help2:""}},asyncData:function(){function n(n){return e.apply(this,arguments)}var e=o()(s.a.mark(function n(e){return s.a.wrap(function(n){for(;;)switch(n.prev=n.next){case 0:console.log(e);case 1:case"end":return n.stop()}},n,this)}));return n}(),mounted:function(){},methods:{}}},324:function(n,e){n.exports={render:function(){var n=this,e=n.$createElement;n._self._c;return n._m(0)},staticRenderFns:[function(){var n=this,e=n.$createElement,t=n._self._c||e;return t("div",{},[t("h1",{staticClass:"display-1"},[n._v("Home Page")])])}]}}});

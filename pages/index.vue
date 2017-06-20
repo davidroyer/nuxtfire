@@ -26,6 +26,22 @@ export default {
       help2: ''
     }
   },
+  async asyncData(context) {
+    console.log(context);
+    // let slug = params.slug
+    // const fileContent = await import(`~static/blog/test1.md`)
+    // console.log(fileContent);
+    // console.log(fileContent);
+    // var postData = FM(data)
+
+    // var attributes =  postData.attributes
+    // var content =  postData.body
+    // return {
+    //   title: attributes.title,
+    //   content: marked(content, { sanitize: true }),
+    //   // markdownFile: marked(data, { sanitize: true })
+    // }
+  },
 
   mounted() {
   },

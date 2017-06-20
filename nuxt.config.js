@@ -1,6 +1,21 @@
 var _ = require('lodash');
 const axios = require('axios')
 const { join } = require('path')
+function slugify(input) {
+  let output = input.toLowerCase()
+   .replace(/[^\w\s-]/g, '') // remove non-word [a-z0-9_], non-whitespace, non-hyphen characters
+   .replace(/[\s_-]+/g, '-') // swap any length of whitespace, underscore, hyphen characters with a single -
+   .replace(/^-+|-+$/g, ''); // remove leading, trailing -
+  return output
+}
+
+function getSlugs(post, index) {
+  let slug = slugify(post.title)
+  return `/post/${slug}`
+}
+
+const postsArray = require('./static/blog/posts.json')
+// const Output = postsArray.map(getSlugs)
 
 module.exports = {
 
@@ -21,8 +36,12 @@ module.exports = {
 
     ]
   },
+  env: {
+    baseUrl: process.env.BASE_URL || 'http://localhost:3000'
+  },
   css: [
-    { src: '~assets/css/editor.css', lang: 'css'},
+    { src: '~assets/css/mde.css', lang: 'css'},
+    // { src: '~assets/scss/surface_styles.scss', lang: 'scss'},
     { src: '~assets/css/app.styl', lang: 'styl' },
     { src: '~assets/css/main.scss', lang: 'scss'}
   ],
@@ -31,46 +50,83 @@ module.exports = {
     { src: '~plugins/vue2-editor.js', ssr: false }
     // '~plugins/mavon-editor.js'
   ],
+  modules: [
+    // {
+    //   src: '@nuxtjs/markdownit',
+    //   options: {
+    //     linkify: true,
+    //     use: [
+    //       /* markdown-it plugin */
+    //       // require('markdown-it-xxx'),
+    //
+    //       /* or */
+    //       [require('markdown-it-task-lists'), {label: true}]
+    //     ]
+    //   }
+    // }
+  ],
   generate: {
     routes: function() {
       return axios.get('https://nuxtfire.firebaseio.com/posts.json')
       .then((res) => {
-        return res.data.map((post, key) => {
-          return '/posts/' + post.slug
+        return _.map(res.data, function(post, key) {
+          return `/fire/${post.slug}`
         })
+
       })
-    },
-    routeParams: {
-      '/posts/:slug': function() {
-        return axios.get('https://nuxtfire.firebaseio.com/posts.json')
-        .then((res) => {
-          return _.map(res.data, function(post, key) {
-            return {slug: post.slug}
-          })
-        })
-      }
     }
+    // routes: function() {
+    //   return postsArray.map(getSlugs)
+    //   return axios.get('/static/blog.json')
+    //   .then((res) => {
+    //     return _.map(res.data, function(post, key) {
+    //       return `/test/${post.slug}`
+    //     })
+    //
+    //   })
+    // }
   },
   build: {
     loaders: [
       {
-        test: /\.md$/,
-        loader: 'vue-markdown-loader'
+         test: /\.md$/,
+         use: [ 'json-loader', 'yaml-frontmatter-loader' ]
       }
       // {
-      //   test: /\.(woff|ttf|eot|svg)/,
-      //   loader: 'file-loader?name=font/[name].[ext]&publicPath=../'
-      // },
+      //   test: /\.md$/,
+      //   loader: 'vue-markdown-loader'
+      // }
       // {
-      //   test: /\.(png|woff|woff2|eot|ttf|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
-      //   loader: 'url'
+      //   test: /\.md$/,
+      //   use: [
+      //     { loader: 'raw-loader' },
+      //     { loader: 'markdownit-loader'}
+      //     // {
+      //     //   loader: 'markdownit-loader',
+      //     //   options: {
+      //     //     // markdown-it config
+      //     //     preset: 'default',
+      //     //     breaks: true,
+      //     //     linkify: true,
+      //     //     preprocess: function(markdownIt, source) {
+      //     //       // do any thing
+      //     //
+      //     //       return source
+      //     //     },
+      //     //
+      //     //     use: [
+      //     //       /* markdown-it plugin */
+      //     //       // require('markdown-it-xxx'),
+      //     //
+      //     //       /* or */
+      //     //       [require('markdown-it-task-lists'), {enabled: true}]
+      //     //     ]
+      //     //   }
+      //     // }
+      //   ]
+      //
       // }
     ],
-    vendor: ['axios', 'vuetify', 'firebase']
-    // postcss: [
-    //   require('postcss-uncss')({
-    //     html: ['https://nuxtfire.firebaseapp.com/'],
-    //   })
-    // ]
+    vendor: ['axios', 'vuetify', 'firebase', 'simplemde']
   }
 }

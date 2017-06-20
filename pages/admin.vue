@@ -1,54 +1,85 @@
 <template>
   <div>
-    <h1 class="display-1">Admin Page</h1>
-    <transition name="fade" mode="out-in">
-      <v-btn v-if="activeUser == false" key="login" primary light @click.native="login">Login</v-btn>
-      <v-btn v-else key="logout" primary light @click.native="logout">Logout</v-btn>
-    </transition>
 
-    <v-text-field
-      name="post-title"
-      label="Post title"
-      id="title"
-      v-model="newTitle"
-    ></v-text-field>
-    <!-- <v-text-field
-      name="post-content"
-      label="Post Content"
-      id="content"
-      v-model="newContent"
-      multi-line
-    ></v-text-field> -->
-    <h6 class="title">Post Content</h6>
-    <vue-editor
-      v-model="newContent">
-    </vue-editor>
-    <v-btn primary light @click.native="saveNewPost">Save Post</v-btn>
+    <div class="flexWrapper">
+
+      <div class="posts">
+        <template v-for="(post, key) in posts">
+          <div class="post" :key="key">
+            <h6 class="title">{{post.title}}</h6>
+            <v-btn dark medium icon class="indigo--text" @click.native="editPost(key, post)">
+              <v-icon>edit</v-icon>
+            </v-btn>
+            <v-btn icon class="red--text text--lighten-2" @click.native="deletePost(key)">
+              <v-icon light>delete</v-icon>
+            </v-btn>
+            <!-- <v-btn dark medium icon class="danger" @click.native="deletePost(key)">
+              <v-icon danger>delete</v-icon>
+            </v-btn> -->
+          </div>
+        </template>
+      </div>
+
+      <div class="editor editorWrapper">
+        <v-text-field
+           name="post_title"
+           label="Post Title"
+           v-model="postTitle">
+         </v-text-field>
+        <mde v-model="content"></mde>
+        <div class="postImage">
+          <div class="" v-if="postImage">
+            <img :src="postImage" alt="">
+          </div>
+          <div class="uploadWrapper" v-else>
+            <input class="inputfile" type="file" name="photoUpload" id="photoUpload" @change="handleUpload(activePost.key, $event)">
+
+            <v-btn warning class="">
+              <label for="photoUpload" class="">Upload Post Image</label>
+            </v-btn>
+          </div>
+        </div>
+        <div class="saveButton">
+          <v-btn info right light @click.native="saveEdit">Save Edits</v-btn>
+          <v-btn info right light @click.native="saveNewPost">Save Post</v-btn>
+        </div>
+      </div>
+    </div>
+
+
   </div>
 </template>
 
 <script>
 import axios from '~plugins/axios'
-
+import marked from 'marked'
+import mde from '~components/mde'
+var _ = require('lodash')
 var dataStore = require('../services/dataStore.js')
 var Store = dataStore.store
 var Auth = Store.state.auth
-console.log(Auth);
+
 
 export default {
   components: {
-    // Editor
+    mde
   },
-  // layout: 'admin',
+  layout: 'admin',
   data () {
     return {
-      newTitle: '',
-      // newContent: 'something',
-      activeUser: false
+      postTitle: '',
+      content: '',
+      postImage: '',
+      input: 'Starting content',
+      activeUser: false,
+      activePost: {},
+      store: Store.state
     }
   },
-  asyncData (context) {
-    return { newContent: '' }
+  async asyncData ({isClient, isServer, route}) {
+    const {data} = await axios.get('/posts.json')
+
+    return { posts: data }
   },
 
   mounted() {
@@ -58,41 +89,33 @@ export default {
         this.activeUser = true
       }
     })
+    this.editorReady = true
   },
-
+  computed: {
+    compiledMarkdown: function () {
+      return marked(this.input, { sanitize: true })
+    }
+  },
   methods: {
+    update(value) {
+      this.input = value
+    },
+
+    handleUpload(postKey, event) {
+      Store.UploadImage(postKey, event)
+    },
     saveNewPost() {
-      function slugify(input) {
-        let output = input.toLowerCase()
-         .replace(/[^\w\s-]/g, '') // remove non-word [a-z0-9_], non-whitespace, non-hyphen characters
-         .replace(/[\s_-]+/g, '-') // swap any length of whitespace, underscore, hyphen characters with a single -
-         .replace(/^-+|-+$/g, ''); // remove leading, trailing -
-        return output
+      let post = {
+        title: this.postTitle,
+        content: this.content,
       }
-
-      function titleCase (input) {
-        if ((input===null) || (input===''))
-             return false;
-        else
-         input = input.toString();
-
-        return input.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
-      }
-
-      axios.post('/testing.json', {
-        title: titleCase(this.newTitle),
-        content: this.newContent,
-        slug: slugify(this.newTitle)
-      })
-      .then(function (response) {
-        console.log(response);
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
+      Store.SaveNewPost(post)
+    },
+    deletePost(key) {
+      console.log(key);
+      Store.DeletePost(key)
     },
     login() {
-      let email = 'droyer01@gmail.com'
       let password = 'Dance4life'
       Auth.signInWithEmailAndPassword(email, password).catch(function(error) {
         // Handle Errors here.
@@ -101,6 +124,23 @@ export default {
         // ...
       });
     },
+    editPost(key, post) {
+      post['key'] = key
+      this.postTitle = post.title
+      this.content = post.content
+      this.postImage = post.image ? post.image : ''
+      this.activePost = post
+    },
+    saveEdit() {
+      let post = {
+        title: this.postTitle,
+        content: this.content,
+        image: this.postImage,
+        key: this.activePost.key
+      }
+      Store.UpdatePost(post)
+    },
+
     logout() {
       Auth.signOut().then(() => {
         this.activeUser = false
@@ -111,34 +151,68 @@ export default {
 }
 </script>
 <style lang="scss">
-.ql-editor {
-    font-size: 1.2em;
-    font-family: 'Roboto';
-    color: #424242;
-    p, li {
-      font-weight: 500;
-    }
-
-    h1, h2, h3, h4, h5, h6 {
-      font-weight: 500;
-    }
+.markdown-editor .CodeMirror {
+  height: 300px;
 }
-.ql-toolbar.ql-snow {
+
+.container container--fluid {
+  position: relative;
+}
+
+.flexWrapper {
+  display: flex;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  flex-flow: row wrap;
+}
+.editor.editorWrapper {
+  display: flex;
+  flex-flow: row wrap;
+  padding-left: 1em;
+  padding-right: 3em;
+}
+.editor {
+    flex: 60%;
+    padding: 0 2em;
+}
+.posts {
+  flex: 1 1 30%;
+  max-width: 400px;
+  padding: 1em;
+  border-right: 2px solid rgba(66, 66, 66, .5);
+
+  .post {
     display: flex;
-    justify-content: flex-start;
-}
-.ql-snow .ql-toolbar button,
-.ql-snow.ql-toolbar button {
-    margin-bottom: 0;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 350px;
+    align-items: baseline;
+
+    .title {
+      margin-right: auto;
+    }
+
+    button {
+      margin-left: 0;
+    }
+  }
 }
 
-.fade-enter-active,
-.fade-leave-active {
-  transition: opacity 0.35s;
-}
+// .inputfile {
+//     width: 0.1px;
+//     height: 0.1px;
+//     opacity: 0;
+//     overflow: hidden;
+//     position: absolute;
+//     z-index: -1;
+// }
 
-.fade-enter,
-.fade-leave-active {
-  opacity: 0;
+.saveButton {
+  margin-left: auto;
+  margin-right: 0;
+  align-self: flex-end;
+  margin-top: 3em;
+  padding-bottom: 1.5em;
 }
 </style>
