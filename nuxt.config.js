@@ -33,7 +33,6 @@ module.exports = {
       // /css/mavonEditor.css
       // { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
       { rel: 'preload', as: 'style', href: 'https://fonts.googleapis.com/icon?family=Material+Icons' }
-
     ]
   },
   env: {
