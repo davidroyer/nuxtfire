@@ -4,10 +4,10 @@ export default function({ store, route, redirect }) {
   const homeRoute = "/";
 
   if (!user && route.path.match(blockedRoute)) {
-    redirect("/");
+    return redirect("/");
   }
 
   if (user && route.path === homeRoute) {
-    redirect("/admin");
+    return redirect("/admin");
   }
 }
