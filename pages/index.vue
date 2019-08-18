@@ -47,6 +47,7 @@ export default {
     async login() {
       // TODO: add parsing of data.
       await this.$store.dispatch("users/login", this.account)
+      console.log('Login finished!');
       this.$router.push("/admin");
 
       // .catch(error => {

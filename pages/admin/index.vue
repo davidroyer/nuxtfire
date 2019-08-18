@@ -1,8 +1,8 @@
 <template>
   <section>
     <h1>Admin route</h1>
-    <h2 v-text=currentUser.email></h2>
-    <a @click="logout">Logout</a>
+    <h2 v-if="currentUser" v-text=currentUser.email></h2>
+    <button @click="logout">Logout</button>
 
 
     <pre>{{currentUser}}</pre>
