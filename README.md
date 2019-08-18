@@ -1,31 +1,19 @@
-# nuxt-firebase
+## Authenticating users with Firebase and Nuxt SSR
 
-> Nuxt.js with Firebase (REST API)
+### Relevant directories:
 
-[DEMO](https://nuxt-firebase.now.sh/)
+- store/index.js
 
-## About
+  > nuxtServerInit checks for the cookie, and sets user to store on server.
 
-This project uses [Firebase](https://firebase.google.com/). The tools and infrastructure you need to build better apps and grow successful businesses.
+- store/users/index.js
 
-You can view the Firebase data at [https://nuxt-firebase.firebaseio.com/.json](https://nuxt-firebase.firebaseio.com/.json). This is what the App will consume.
+  > Where login action happens and JWT cookie from Firebase is set.
 
-## Getting Started
+- middleware/authenticated.js
 
-Download this example [or clone the repo](https://github.com/nuxt/nuxt.js):
+  > Where routes are authenticated and redirects happen if !user.
 
-```bash
-curl https://codeload.github.com/nuxt/nuxt.js/tar.gz/master | tar -xz --strip=2 nuxt.js-master/examples/with-firebase
-cd with-firebase
-```
+- pages/index.vue
 
-Install and run:
-
-```bash
-npm install
-npm run dev
-
-# or with Yarn
-yarn
-yarn dev
-```
+  > Where the login form resides.

@@ -1,51 +1,65 @@
 <template>
-  <div class="">
-    <h1 class="display-1">Home Page</h1>
-  <!-- <no-ssr> -->
-      <!-- <mavon-editor :language="d_language" class="item-editor"></mavon-editor> -->
-  <!-- </no-ssr> -->
-     <!-- <mavon-editor :language="d_language" v-model="editorContent"></mavon-editor> -->
+  <div class="col-lg-6 mx-auto my-2">
+    <h1>Login to your account</h1>
+    <form @submit.prevent>
+      <div class="form-group">
+        <input
+          v-model="account.email"
+          id="nuxtfire-email"
+          type="email"
+          class="form-control"
+          placeholder="E-mail address"
+        >
+      </div>
+
+      <div class="form-group">
+        <input
+          v-model="account.password"
+          id="nuxtfire-password"
+          type="password"
+          class="form-control"
+          placeholder="Password"
+        >
+      </div>
+
+      <div class="form-group">
+        <input @click="login" type="submit" class="btn btn-primary">
+      </div>
+      <div v-if="isError" class="alert alert-danger">
+        <p class="mb-0">{{ errMsg }}</p>
+      </div>
+    </form>
   </div>
 </template>
 
 <script>
-import NoSSR from 'vue-no-ssr'
-
+import { setTimeout } from "timers";
 export default {
-  components: {
-    'no-ssr': NoSSR
-  },
-  // asyncData (context) {
-  //
-  //   // called every time before loading the component
-  //   return { editorContent: 'Content for editor', lang: 'en', }
-  // },
-  data() {
-    return {
-      d_language: 'en',
-      help2: ''
-    }
-  },
-  async asyncData(context) {
-    console.log(context);
-    // let slug = params.slug
-    // const fileContent = await import(`~static/blog/test1.md`)
-    // console.log(fileContent);
-    // console.log(fileContent);
-    // var postData = FM(data)
-
-    // var attributes =  postData.attributes
-    // var content =  postData.body
-    // return {
-    //   title: attributes.title,
-    //   content: marked(content, { sanitize: true }),
-    //   // markdownFile: marked(data, { sanitize: true })
-    // }
-  },
-
-  mounted() {
-  },
+  data: () => ({
+    account: {
+      email: "",
+      password: ""
+    },
+    isError: false,
+    errMsg: ""
+  }),
   methods: {
+    async login() {
+      // TODO: add parsing of data.
+      await this.$store.dispatch("users/login", this.account)
+      this.$router.push("/admin");
+
+      // .catch(error => {
+      //   this.isError = true;
+      //   this.errMsg = error.code;
+
+      //   setTimeout(() => {
+      //     this.isError = false;
+      //   }, 5000);
+      // });
+
+      
+    }
   }
-}
+};
 </script>
