@@ -3,8 +3,6 @@
     <h1>Admin route</h1>
     <h2 v-if="currentUser" v-text=currentUser.email></h2>
     <button @click="logout">Logout</button>
-
-
     <pre>{{currentUser}}</pre>
   </section>
 </template>
