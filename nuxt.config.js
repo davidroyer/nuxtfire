@@ -32,7 +32,9 @@ export default {
   /*
    ** Plugins to load before mounting the App
    */
-  plugins: [],
+  plugins: [
+    '@/plugins/init.client.js'
+  ],
 
   /**
    * Router settings
