@@ -23,7 +23,7 @@ export default {
   methods: {
     async logout() {
       await auth.signOut();
-      await Cookie.remove("access_token");
+      // await Cookie.remove("access_token");
 
       location.href = "/";
     }

@@ -11,22 +11,22 @@ export const actions = {
     })
   },
 
-  nuxtServerInit({ commit }, { req }) {
-    if (process.server && process.static) return;
-    if (!req.headers.cookie) return;
+  // nuxtServerInit({ commit }, { req }) {
+  //   if (process.server && process.static) return;
+  //   if (!req.headers.cookie) return;
 
-    const parsed = cookieparser.parse(req.headers.cookie);
-    const accessTokenCookie = parsed.access_token;
+  //   const parsed = cookieparser.parse(req.headers.cookie);
+  //   const accessTokenCookie = parsed.access_token;
 
-    if (!accessTokenCookie) return;
+  //   if (!accessTokenCookie) return;
 
-    const decoded = JWTDecode(accessTokenCookie);
+  //   const decoded = JWTDecode(accessTokenCookie);
 
-    if (decoded) {
-      commit("users/SET_USER", {
-        uid: decoded.user_id,
-        email: decoded.email
-      });
-    }
-  }
+  //   if (decoded) {
+  //     commit("users/SET_USER", {
+  //       uid: decoded.user_id,
+  //       email: decoded.email
+  //     });
+  //   }
+  // }
 };

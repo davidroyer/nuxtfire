@@ -1,13 +1,14 @@
 export default function({ store, route, redirect }) {
   const user = store.state.users.user;
+  console.log("TCL: user", user)
   const blockedRoute = /\/admin\/*/g;
   const homeRoute = "/";
 
   if (!user && route.path.match(blockedRoute)) {
-    return redirect("/");
+    redirect("/");
   }
 
   if (user && route.path === homeRoute) {
-    return redirect("/admin");
+    redirect("/admin");
   }
 }
