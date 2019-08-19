@@ -1,5 +1,6 @@
 <template>
   <div class="col-lg-6 mx-auto my-2">
+        <pre v-if="currentUser">{{currentUser}}</pre>
     <h1>Login to your account</h1>
     <form @submit.prevent>
       <div class="form-group">
@@ -43,6 +44,11 @@ export default {
     isError: false,
     errMsg: ""
   }),
+  computed: {
+    currentUser () {
+      return this.$store.state.users.user
+    }
+  },  
   methods: {
     async login() {
       // TODO: add parsing of data.
