@@ -1,6 +1,11 @@
 <template>
   <div>
     <h1>profile</h1>
+    <section>
+      <p>URL: {{ $route.fullPath }}</p>
+      <p>SSR: {{ ssr ? 'true' : 'false' }}</p>
+    </section>
+    <pre v-if="currentUser">{{currentUser}}</pre>    
   </div>
 </template>
 

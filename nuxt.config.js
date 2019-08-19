@@ -11,12 +11,9 @@ export default {
   head: {
     title: pkg.name,
     meta: [{ charset: "utf-8" }, { name: "viewport", content: "width=device-width, initial-scale=1" }, { hid: "description", name: "description", content: pkg.description }],
-    link: [
-      { rel: "icon", type: "image/x-icon", href: "/favicon.ico" },
-      { rel: "stylesheet", href: "https://bootswatch.com/4/darkly/bootstrap.min.css" }
-    ]
+    link: [{ rel: "icon", type: "image/x-icon", href: "/favicon.ico" }, { rel: "stylesheet", href: "https://bootswatch.com/4/darkly/bootstrap.min.css" }]
   },
-  
+
   env: {
     fbApiKey: process.env.APIKEY
   },
@@ -39,7 +36,7 @@ export default {
    * Router settings
    */
   router: {
-    // middleware: ["authenticated"]
+    middleware: ["admin-guard"]
   },
 
   /*
@@ -56,6 +53,5 @@ export default {
      */
     extend(config, ctx) {}
   },
-  serverMiddleware: ['@/serverMiddleware/selectiveSSR.js']
-
+  serverMiddleware: ["@/serverMiddleware/selectiveSSR.js"]
 };

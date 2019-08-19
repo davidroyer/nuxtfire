@@ -16,7 +16,6 @@ import { auth } from "@/services/firebase";
 import Cookie from "js-cookie";
 
 export default {
-  middleware: 'admin-guard',
   asyncData () {
     return {
       ssr: process.server
@@ -32,7 +31,6 @@ export default {
     async logout () {
       await auth.signOut();
       // await Cookie.remove("access_token");
-
       location.href = "/";
     }
   }
