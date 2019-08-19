@@ -2,8 +2,8 @@ import pkg from "./package";
 require("dotenv").config();
 
 export default {
-  // mode: "universal",
-  mode: "spa",
+  mode: "universal",
+  // mode: "spa",
 
   /*
    ** Headers of the page
@@ -16,6 +16,7 @@ export default {
       { rel: "stylesheet", href: "https://bootswatch.com/4/darkly/bootstrap.min.css" }
     ]
   },
+  
   env: {
     fbApiKey: process.env.APIKEY
   },
@@ -38,7 +39,7 @@ export default {
    * Router settings
    */
   router: {
-    middleware: ["authenticated"]
+    // middleware: ["authenticated"]
   },
 
   /*
@@ -54,5 +55,7 @@ export default {
      ** You can extend webpack config here
      */
     extend(config, ctx) {}
-  }
+  },
+  serverMiddleware: ['@/serverMiddleware/selectiveSSR.js']
+
 };
