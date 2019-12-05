@@ -3,8 +3,7 @@
 
   "build": {
     "env": {
-      "API_KEY": "@api_key",
-      "MY_VARIABLE": "VARIABLE VALUE"
+      "API_KEY": "@api_key"
     }
   },
 

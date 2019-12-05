@@ -25,7 +25,6 @@ export default {
   },
 
   env: {
-    nowApiKey: process.env.MY_VARIABLE,
     API_KEY: process.env.API_KEY
   },
   /*

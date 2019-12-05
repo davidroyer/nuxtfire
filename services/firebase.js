@@ -1,8 +1,8 @@
 import firebase from "firebase/app";
 import "firebase/auth";
 
-console.log("nowApiKey var", process.env.nowApiKey);
-console.log("API_KEY var", process.env.API_KEY);
+console.log("API_KEY", process.env.API_KEY);
+console.log("only 1 key");
 
 // const config = {
 //   apiKey: process.env.fbApiKey,
