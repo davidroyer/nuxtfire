@@ -1,0 +1,23 @@
+{
+  "version": 2,
+  "env": {
+    "API_KEY": "@api_key",
+    "MY_VARIABLE": "VARIABLE VALUE"
+  },
+  "build": {
+    "env": {
+      "API_KEY": "@api_key",
+      "MY_VARIABLE": "VARIABLE VALUE"
+    }
+  },
+
+  "builds": [
+    {
+      "src": "nuxt.config.js",
+      "use": "@nuxtjs/now-builder",
+      "config": {
+        "serverFiles": ["server-middleware/**"]
+      }
+    }
+  ]
+}

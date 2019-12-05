@@ -1,8 +1,8 @@
 {
-  "name": "nuxt-fire-auth",
-  "version": "1.0.0",
+  "name": "nuxtfire",
+  "version": "0.0.1",
   "description": "My first-rate Nuxt.js project",
-  "author": "Eckhardt Dreyer",
+  "author": "David Royer",
   "private": true,
   "scripts": {
     "dev": "nuxt",
@@ -21,5 +21,8 @@
   },
   "devDependencies": {
     "nodemon": "^1.18.9"
+  },
+  "engines": {
+    "node": "10.x"
   }
 }

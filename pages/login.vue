@@ -19,6 +19,7 @@ export default {
     },
 
   },
+
   middleware: 'login-route-guard'
 }
 </script>

@@ -2,9 +2,9 @@
   <div class="col-lg-6 mx-auto my-2">
     <section>
       <p>URL: {{ $route.fullPath }}</p>
-      <p>SSR: {{ ssr ? 'true' : 'false' }}</p>
+      <p>SSR: {{ ssr ? "true" : "false" }}</p>
     </section>
-    <pre v-if="currentUser">{{currentUser}}</pre>
+    <pre v-if="currentUser">{{ currentUser }}</pre>
     <h1>Login to your account</h1>
     <form @submit.prevent>
       <div class="form-group">
@@ -40,10 +40,10 @@
 <script>
 import { setTimeout } from "timers";
 export default {
-  asyncData () {
+  asyncData() {
     return {
       ssr: process.server
-    }
+    };
   },
 
   data: () => ({
@@ -55,14 +55,14 @@ export default {
     errMsg: ""
   }),
   computed: {
-    currentUser () {
-      return this.$store.state.users.user || {}
+    currentUser() {
+      return this.$store.state.users.user || {};
     }
   },
   methods: {
-    async login () {
-      await this.$store.dispatch("users/login", this.account)
-      console.log('Login finished!');
+    async login() {
+      await this.$store.dispatch("users/login", this.account);
+      console.log("Login finished!");
       this.$router.push("/admin");
     }
   }
