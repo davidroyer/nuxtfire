@@ -12,24 +12,24 @@
 </template>
 
 <script>
-import { auth } from "@/services/firebase";
+// import { auth } from "@/services/firebase";
 import Cookie from "js-cookie";
 
 export default {
-  asyncData() {
+  asyncData () {
     return {
       ssr: process.server
     };
   },
 
   computed: {
-    currentUser() {
+    currentUser () {
       return this.$store.state.users.user || {};
     }
   },
   methods: {
-    async logout() {
-      await auth.signOut();
+    async logout () {
+      await this.$auth.signOut();
       await Cookie.remove("access_token");
       location.href = "/";
     }

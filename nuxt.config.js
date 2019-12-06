@@ -40,7 +40,7 @@ export default {
   /*
    ** Plugins to load before mounting the App
    */
-  // plugins: ["@/plugins/init.js"],
+  plugins: ["@/plugins/firebase.js"],
   // plugins: ["@/plugins/init.client.js"],
 
   /**

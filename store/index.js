@@ -3,13 +3,14 @@ import cookieparser from "cookieparser";
 import { log } from "util";
 
 export const actions = {
-  // nuxtClientInit({ commit }, user) {
-  //   if (!user) return
-  //   commit('users/SET_USER', {
-  //     email: user.email,
-  //     uid: user.uid
-  //   })
-  // },
+  async login({ commit }, account) {
+    console.log("FROM NEW LOGIN ACTION");
+
+    await this.$auth.signInWithEmailAndPassword(
+      account.email,
+      account.password
+    );
+  },
 
   nuxtServerInit({ commit }, { req }) {
     console.log("nuxtServerInit -> prechecks");
@@ -26,6 +27,8 @@ export const actions = {
     const decoded = JWTDecode(accessTokenCookie);
 
     if (decoded) {
+      console.log("TCL: nuxtServerInit -> decoded", decoded);
+
       commit("users/SET_USER", {
         uid: decoded.user_id,
         email: decoded.email
