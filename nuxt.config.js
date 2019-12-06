@@ -64,5 +64,4 @@ export default {
      */
     extend(config, ctx) {}
   }
-  // serverMiddleware: ["@/serverMiddleware/selectiveSSR.js"]
 };
