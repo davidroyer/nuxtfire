@@ -25,7 +25,8 @@ export default {
   },
 
   env: {
-    API_KEY: process.env.API_KEY
+    API_KEY: process.env.API_KEY,
+    SECRET_VAR: process.env.SECRET_VAR
   },
   /*
    ** Customize the progress-bar color
@@ -47,7 +48,7 @@ export default {
    * Router settings
    */
   router: {
-    middleware: ["authenticated"]
+    middleware: ["admin-guard"]
   },
 
   /*

@@ -3,7 +3,8 @@
 
   "build": {
     "env": {
-      "API_KEY": "@api_key"
+      "API_KEY": "@api_key",
+      "SECRET_VAR": "@secret-var"
     }
   },
 

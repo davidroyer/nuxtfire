@@ -1,6 +1,7 @@
 import * as firebase from "firebase/app";
 import "firebase/auth";
-// let fireApp;
+
+console.log("Test -> SECRET_VAR: ", process.env.SECRET_VAR);
 
 const config = {
   apiKey: process.env.API_KEY,
@@ -13,13 +14,10 @@ const config = {
 };
 
 if (!firebase.apps.length) firebase.initializeApp(config);
+
 const fireApp = firebase;
-// console.log("plugins file: fireApp", fireApp);
-
 const auth = fireApp.auth();
-
 const GoogleProvider = new firebase.auth.GoogleAuthProvider();
-// console.log("fireApp", fireApp);
 
 export { GoogleProvider, fireApp, auth };
 

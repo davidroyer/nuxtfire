@@ -2,6 +2,9 @@
   <div>
     <h1>Login</h1>
     <button @click.prevent="login">Login</button>
+    <button @click.prevent="googleLogin">Google Login</button>
+
+
   </div>
 </template>
 
@@ -14,15 +17,15 @@ export default {
         email: "droyer01@gmail.com",
         password: "Dance4life"
       })
-      console.log('Login finished!');
       this.$router.push("/admin");
     },
 
+    async googleLogin () {
+      await this.$store.dispatch("users/googleLogin")
+      this.$router.push("/admin");
+    },
   },
 
   middleware: 'login-route-guard'
 }
 </script>
-
-<style lang="scss" scoped>
-</style>
