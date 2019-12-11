@@ -29,5 +29,9 @@
     "eslint-plugin-prettier": "^3.0.1",
     "js-yaml-loader": "^1.2.2",
     "prettier": "^1.16.4"
+  },
+
+  "engines": {
+    "node": "10.x"
   }
 }
