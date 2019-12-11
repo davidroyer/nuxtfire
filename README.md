@@ -1,19 +1,22 @@
-## Authenticating users with Firebase and Nuxt SSR
+# nuxtfire
 
-### Relevant directories:
+> My slick Nuxt.js project
 
-- store/index.js
+## Build Setup
 
-  > nuxtServerInit checks for the cookie, and sets user to store on server.
+``` bash
+# install dependencies
+$ yarn install
 
-- store/users/index.js
+# serve with hot reload at localhost:3000
+$ yarn dev
 
-  > Where login action happens and JWT cookie from Firebase is set.
+# build for production and launch server
+$ yarn build
+$ yarn start
 
-- middleware/authenticated.js
+# generate static project
+$ yarn generate
+```
 
-  > Where routes are authenticated and redirects happen if !user.
-
-- pages/index.vue
-
-  > Where the login form resides.
+For detailed explanation on how things work, check out [Nuxt.js docs](https://nuxtjs.org).

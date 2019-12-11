@@ -1,31 +1,22 @@
 <template>
-  <div>
-    <h1>Login</h1>
-    <button @click.prevent="login">Login</button>
-    <button @click.prevent="googleLogin">Google Login</button>
-
-
-  </div>
+  <v-row align="center">
+    <v-col cols="12" md="5">
+      <h2>Login Here</h2>
+      <v-btn @click="handleGoogleLogin" color="primary">Google Login</v-btn>
+    </v-col>
+  </v-row>
 </template>
 
 <script>
 export default {
-
   methods: {
-    async login () {
-      await this.$store.dispatch("users/login", {
-        email: "droyer01@gmail.com",
-        password: "Dance4life"
-      })
-      this.$router.push("/admin");
-    },
-
-    async googleLogin () {
-      await this.$store.dispatch("users/googleLogin")
-      this.$router.push("/admin");
-    },
-  },
-
-  middleware: 'login-route-guard'
+    async handleGoogleLogin() {
+      await this.$store.dispatch('users/googleLogin')
+      // eslint-disable-next-line no-console
+      console.log('login complete')
+    }
+  }
 }
 </script>
+
+<style lang="scss" scoped></style>

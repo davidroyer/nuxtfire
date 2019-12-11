@@ -1,24 +1,23 @@
 <template>
-  <section class="container">
-    <nuxt-link to="/">Home</nuxt-link>
-    <nuxt-link to="/admin">Admin</nuxt-link>
-    <nuxt-link to="/admin/profile">Admin Profile</nuxt-link>
-    <nuxt-link to="/login">Login</nuxt-link>
-
-    <nuxt />
-  </section>
+  <VApp>
+    <VSiteHeader />
+    <VContent />
+    <VMobileNav />
+    <VSiteFooter />
+  </VApp>
 </template>
 
 <script>
-export default {
-  computed: {
-    currentUser () {
-      return this.$store.state.users.user || {}
-    }
-  }
-};
-</script>
+import VContent from '@/components/layout/VContent'
+import VMobileNav from '@/components/layout/VMobileNav'
+import VSiteHeader from '@/components/layout/VSiteHeader'
 
-<style>
-/* @import url(https://bootswatch.com/4/darkly/bootstrap.min.css); */
-</style>
+export default {
+  components: {
+    VMobileNav,
+    VContent,
+    VSiteHeader,
+    VSiteFooter: () => import('@/components/layout/VSiteFooter')
+  }
+}
+</script>

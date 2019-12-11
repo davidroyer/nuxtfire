@@ -1,60 +1,77 @@
-import pkg from "./package";
-require("dotenv").config();
+import colors from 'vuetify/es5/util/colors'
+require('dotenv').config()
 
 export default {
-  mode: "universal",
-  // mode: "spa",
+  mode: 'universal',
+
+  env: {
+    API_KEY: process.env.API_KEY
+  },
 
   /*
    ** Headers of the page
    */
   head: {
-    title: pkg.name,
+    titleTemplate: '%s - ' + process.env.npm_package_name,
+    title: process.env.npm_package_name || '',
     meta: [
-      { charset: "utf-8" },
-      { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { hid: "description", name: "description", content: pkg.description }
-    ],
-    link: [
-      { rel: "icon", type: "image/x-icon", href: "/favicon.ico" },
+      { charset: 'utf-8' },
+      { name: 'viewport', content: 'width=device-width, initial-scale=1' },
       {
-        rel: "stylesheet",
-        href: "https://bootswatch.com/4/darkly/bootstrap.min.css"
+        hid: 'description',
+        name: 'description',
+        content: process.env.npm_package_description || ''
       }
-    ]
-  },
-
-  env: {
-    API_KEY: process.env.API_KEY,
-    SECRET_VAR: process.env.SECRET_VAR
+    ],
+    link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }]
   },
   /*
    ** Customize the progress-bar color
    */
-  loading: { color: "#fff" },
-
+  loading: { color: '#fff' },
   /*
    ** Global CSS
    */
   css: [],
-
   /*
    ** Plugins to load before mounting the App
    */
-  plugins: ["@/plugins/firebase.js"],
+  plugins: ['@/plugins/firebase.js'],
 
-  /**
-   * Router settings
+  /*
+   ** Nuxt.js dev-modules
    */
-  router: {
-    middleware: ["admin-guard"]
-  },
-
+  buildModules: [
+    // Doc: https://github.com/nuxt-community/eslint-module
+    '@nuxtjs/eslint-module',
+    '@nuxtjs/vuetify'
+  ],
   /*
    ** Nuxt.js modules
    */
-  modules: [],
-
+  modules: ['@nuxtjs/pwa', '@/modules/nuxt-stack.js'],
+  /*
+   ** vuetify module configuration
+   ** https://github.com/nuxt-community/vuetify-module
+   */
+  vuetify: {
+    customVariables: ['~/assets/variables.scss'],
+    theme: {
+      dark: true,
+      treeShaking: true,
+      themes: {
+        dark: {
+          primary: colors.indigo.base,
+          accent: colors.grey.darken3,
+          secondary: colors.amber.darken3,
+          info: colors.teal.lighten1,
+          warning: colors.amber.base,
+          error: colors.deepOrange.accent4,
+          success: colors.green.accent3
+        }
+      }
+    }
+  },
   /*
    ** Build configuration
    */
@@ -64,4 +81,4 @@ export default {
      */
     extend(config, ctx) {}
   }
-};
+}

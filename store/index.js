@@ -1,24 +1,16 @@
-import JWTDecode from "jwt-decode";
-import cookieparser from "cookieparser";
-import { log } from "util";
+import site from '@/db/site.yml'
 
-export const actions = {
-  nuxtServerInit({ commit }, { req }) {
-    if (process.server && process.static) return;
-    if (!req.headers.cookie) return;
+export const state = () => ({
+  site,
+  drawer: false
+})
 
-    const parsed = cookieparser.parse(req.headers.cookie);
-    const accessTokenCookie = parsed.access_token;
-    if (!accessTokenCookie) return;
-    
-    const decoded = JWTDecode(accessTokenCookie);
+export const mutations = {
+  setDrawer(state, payload) {
+    state.drawer = payload
+  },
 
-    if (decoded) {
-      commit("users/SET_USER", {
-        uid: decoded.user_id,
-        email: decoded.email,
-        picture: decoded.picture
-      });
-    }
+  toggleDrawer(state, payload) {
+    state.drawer = !state.drawer
   }
-};
+}
