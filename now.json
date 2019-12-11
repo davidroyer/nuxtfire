@@ -13,7 +13,7 @@
       "src": "nuxt.config.js",
       "use": "@nuxtjs/now-builder",
       "config": {
-        "serverFiles": ["server-middleware/**"]
+        "serverFiles": ["server-middleware/**", "modules/**"]
       }
     }
   ]

@@ -8,4 +8,9 @@ export default function(moduleOptions) {
       use: 'js-yaml-loader'
     })
   })
+
+  if (process.client) {
+    // eslint-disable-next-line no-console
+    console.log('FROM MODULE')
+  }
 }

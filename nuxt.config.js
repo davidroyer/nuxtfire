@@ -32,7 +32,7 @@ export default {
   /*
    ** Global CSS
    */
-  css: [],
+  css: ['@/assets/main.scss'],
   /*
    ** Plugins to load before mounting the App
    */
@@ -49,16 +49,17 @@ export default {
   /*
    ** Nuxt.js modules
    */
-  modules: ['@nuxtjs/pwa'],
+  modules: ['@nuxtjs/pwa', '@/modules/nuxt-stack.js'],
   /*
    ** vuetify module configuration
    ** https://github.com/nuxt-community/vuetify-module
    */
   vuetify: {
     customVariables: ['~/assets/variables.scss'],
+    treeShake: true,
     theme: {
       dark: true,
-      treeShaking: true,
+
       themes: {
         dark: {
           primary: colors.indigo.base,
@@ -76,11 +77,11 @@ export default {
    ** Build configuration
    */
   build: {
-    extend(config, ctx) {
-      config.module.rules.push({
-        test: /\.ya?ml$/,
-        use: 'js-yaml-loader'
-      })
-    }
+    // extend(config, ctx) {
+    //   config.module.rules.push({
+    //     test: /\.ya?ml$/,
+    //     use: 'js-yaml-loader'
+    //   })
+    // }
   }
 }
