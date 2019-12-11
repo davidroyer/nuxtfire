@@ -49,7 +49,7 @@ export default {
   /*
    ** Nuxt.js modules
    */
-  modules: ['@nuxtjs/pwa', '@/modules/nuxt-stack.js'],
+  modules: ['@nuxtjs/pwa', '~/modules/nuxt-stack.js'],
   /*
    ** vuetify module configuration
    ** https://github.com/nuxt-community/vuetify-module
