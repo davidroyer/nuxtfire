@@ -77,11 +77,10 @@ export default {
    ** Build configuration
    */
   build: {
-    // extend(config, ctx) {
-    //   config.module.rules.push({
-    //     test: /\.ya?ml$/,
-    //     use: 'js-yaml-loader'
-    //   })
-    // }
+    extend(config, ctx) {}
+  },
+
+  router: {
+    middleware: ['admin-guard']
   }
 }

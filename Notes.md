@@ -24,3 +24,15 @@ $btn-font-weight: 900;
 
 You should create an additional `scss` file like `main.scss` and import it via
 `css` option in `nuxt.config`.
+
+---
+
+## NOW
+
+This was needed in `now.json` to add local modules:
+
+```js
+"config": {
+    "serverFiles": ["server-middleware/**", "modules/**"]
+}
+```

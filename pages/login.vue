@@ -9,6 +9,8 @@
 
 <script>
 export default {
+  middleware: 'login-route-guard',
+
   methods: {
     async handleGoogleLogin() {
       await this.$store.dispatch('users/googleLogin')
