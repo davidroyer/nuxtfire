@@ -6,11 +6,24 @@
         v-for="(item, index) in navItems"
         :key="index"
         :to="item.path"
-        router
+        nuxt
         exact
       >
         <v-list-item-content>
           <v-list-item-title v-text="item.title" />
+        </v-list-item-content>
+      </v-list-item>
+      <v-divider></v-divider>
+      <v-list-item>
+        <v-list-item-content>
+          <v-btn
+            v-if="$store.state.users.user"
+            @click="handleLogout"
+            color="primary"
+            dark
+            depressed
+            >Logout
+          </v-btn>
         </v-list-item-content>
       </v-list-item>
     </v-list>
@@ -39,6 +52,9 @@ export default {
   },
 
   methods: {
+    handleLogout() {
+      this.$store.dispatch('users/logout')
+    },
     ...mapMutations(['setDrawer', 'toggleDrawer'])
   }
 }

@@ -45,9 +45,11 @@ export const actions = {
     this.$router.push('/admin')
   },
 
-  async logout() {
+  async logout({ commit }) {
     await this.$auth.signOut()
     await Cookie.remove('access_token')
+    commit('SET_USER', null)
     this.$router.push('/')
+    alert('Logged Out!')
   }
 }

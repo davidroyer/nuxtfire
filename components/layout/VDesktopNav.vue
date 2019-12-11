@@ -20,8 +20,8 @@
       @click="handleLogout"
       light
       color="white"
-      >Logout</v-btn
-    >
+      >Logout
+    </v-btn>
     <!-- <v-btn color="white" @click="handleLogout" v-else>Login</v-btn> -->
   </v-toolbar-items>
 </template>

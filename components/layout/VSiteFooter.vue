@@ -2,10 +2,18 @@
   <v-footer dark>
     <v-row class="v-footer-bottom px-4">
       <v-col>
-        <span class="footer-text">All Rights Reserved &copy; 2019</span>
+        <span class="footer-text">Copyright &copy; 2019 David Royer</span>
       </v-col>
       <v-col class="text-right">
-        <span class="footer-text">+436 701 32 43 92</span>
+        <a
+          href="https://github.com/davidroyer/nuxtfire"
+          target="_blank"
+          rel="nofollow"
+          class="text--white"
+        >
+          Github Repo
+        </a>
+        <span class="footer-text"></span>
       </v-col>
     </v-row>
   </v-footer>
