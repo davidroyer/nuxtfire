@@ -13,7 +13,7 @@
       "src": "nuxt.config.js",
       "use": "@nuxtjs/now-builder",
       "config": {
-        "serverFiles": ["server-middleware/**", "modules/**"]
+        "serverFiles": ["server-middleware/**", "modules/**", "node_modules/vuetify/es5/util/colors"]
       }
     }
   ]

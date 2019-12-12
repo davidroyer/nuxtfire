@@ -59,7 +59,7 @@ export default {
     // treeShake: true,
     theme: {
       dark: true,
-
+      light: false,
       themes: {
         dark: {
           primary: colors.indigo.base,
