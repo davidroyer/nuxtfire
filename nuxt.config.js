@@ -1,4 +1,3 @@
-import colors from 'vuetify/es5/util/colors'
 require('dotenv').config()
 
 export default {
@@ -12,8 +11,8 @@ export default {
    ** Headers of the page
    */
   head: {
-    titleTemplate: '%s - ' + process.env.npm_package_name,
-    title: process.env.npm_package_name || '',
+    titleTemplate: '%s - ' + 'NuxtFire',
+    title: 'NuxtFire' || '',
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
@@ -56,22 +55,8 @@ export default {
    */
   vuetify: {
     customVariables: ['~/assets/variables.scss'],
+    optionsPath: './vuetify.config.js'
     // treeShake: true,
-    theme: {
-      dark: true,
-      light: false,
-      themes: {
-        dark: {
-          primary: colors.indigo.base,
-          accent: colors.grey.darken3,
-          secondary: colors.amber.darken3,
-          info: colors.teal.lighten1,
-          warning: colors.amber.base,
-          error: colors.deepOrange.accent4,
-          success: colors.green.accent3
-        }
-      }
-    }
   },
   /*
    ** Build configuration
