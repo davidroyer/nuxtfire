@@ -23,12 +23,12 @@
         </v-card-text>
         <v-divider></v-divider>
         <v-card-actions>
-          <v-btn light>
+          <v-btn light color="white">
             <v-icon>mdi-email</v-icon>
             Email Signup
           </v-btn>
           <v-spacer />
-          <v-btn color="primary lighten-1">
+          <v-btn @click="handleGoogleLogin" light color="white">
             Google Login
           </v-btn>
         </v-card-actions>

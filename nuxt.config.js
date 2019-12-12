@@ -48,7 +48,7 @@ export default {
   /*
    ** Nuxt.js modules
    */
-  modules: ['@nuxtjs/pwa', '@/modules/nuxt-stack.js'],
+  modules: ['@nuxtjs/pwa', '@/modules/nuxt-stack.js', 'cookie-universal-nuxt'],
   /*
    ** vuetify module configuration
    ** https://github.com/nuxt-community/vuetify-module

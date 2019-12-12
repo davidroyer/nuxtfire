@@ -4,6 +4,10 @@
       @click="$router.push('/')"
       v-text="$store.state.site.title"
     />
+    <v-avatar v-if="$store.state.users.user" class="ml-4" size="42">
+      <img :src="$store.state.users.user.picture" alt="avatar" />
+    </v-avatar>
+
     <v-spacer />
 
     <v-desktop-nav />

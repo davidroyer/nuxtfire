@@ -10,3 +10,9 @@ body {
 .page-leave-active {
   opacity: 0;
 }
+
+.v {
+  &-toolbar__title {
+    cursor: pointer;
+  }
+}

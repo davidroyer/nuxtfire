@@ -4,6 +4,7 @@
       <v-col>
         <span class="footer-text">Copyright &copy; 2019 David Royer</span>
       </v-col>
+
       <v-col class="text-right">
         <a
           href="https://github.com/davidroyer/nuxtfire"

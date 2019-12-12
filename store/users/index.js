@@ -1,4 +1,5 @@
-import Cookie from 'js-cookie'
+/* eslint-disable no-console */
+// import Cookie from 'js-cookie'
 import { GoogleProvider } from '@/plugins/firebase'
 
 export const state = () => ({
@@ -25,7 +26,8 @@ export const actions = {
       const { email, uid, photoURL: picture } = this.$auth.currentUser
 
       // Set JWT to the cookie
-      Cookie.set('access_token', token)
+      // Cookie.set('access_token', token)
+      this.$cookies.set('access_token', token)
       commit('SET_USER', { email, uid, picture })
     } catch (error) {
       throw error
@@ -40,14 +42,18 @@ export const actions = {
     const { email, uid, photoURL: picture } = this.$auth.currentUser
 
     // Set JWT to the cookie
-    Cookie.set('access_token', token)
+    // Cookie.set('access_token', token)
+    this.$cookies.set('access_token', token)
+    console.log('TCL: googleLogin -> this.$cookies', this.$cookies)
     commit('SET_USER', { email, uid, picture })
     this.$router.push('/admin')
   },
 
   async logout({ commit }) {
+    console.log('TCL: googleLogin -> this.$cookies', this.$cookies)
+
     await this.$auth.signOut()
-    await Cookie.remove('access_token')
+    this.$cookies.remove('access_token')
     commit('SET_USER', null)
     this.$router.push('/')
     alert('Logged Out!')
