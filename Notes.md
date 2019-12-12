@@ -29,6 +29,8 @@ You should create an additional `scss` file like `main.scss` and import it via
 
 ## NOW
 
+### Local Modules
+
 This was needed in `now.json` to add local modules:
 
 ```js
@@ -36,3 +38,21 @@ This was needed in `now.json` to add local modules:
     "serverFiles": ["server-middleware/**", "modules/**"]
 }
 ```
+
+### Vuetify
+
+To import the `colors` file there are 2 options:
+
+1. Just change `@nuxtjs/vuetify` to a regular Dependency instead of a DevDependency
+
+2. Use a vuetify config file and import it there and set the path of the file in
+   the module options like:
+
+   ```js
+   export default {
+     vuetify: {
+       customVariables: ['~/assets/variables.scss'],
+       optionsPath: './vuetify.config.js'
+     }
+   }
+   ```

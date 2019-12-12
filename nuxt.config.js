@@ -49,6 +49,7 @@ export default {
    ** Nuxt.js modules
    */
   modules: ['@nuxtjs/pwa', '@/modules/nuxt-stack.js', 'cookie-universal-nuxt'],
+
   /*
    ** vuetify module configuration
    ** https://github.com/nuxt-community/vuetify-module
@@ -56,8 +57,8 @@ export default {
   vuetify: {
     customVariables: ['~/assets/variables.scss'],
     optionsPath: './vuetify.config.js'
-    // treeShake: true,
   },
+
   /*
    ** Build configuration
    */

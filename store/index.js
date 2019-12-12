@@ -1,6 +1,5 @@
 /* eslint-disable no-console */
 import JWTDecode from 'jwt-decode'
-// import cookieparser from 'cookieparser'
 import site from '@/db/site.yml'
 
 export const state = () => ({
